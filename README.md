@@ -4,4 +4,7 @@ A party game in which it's minigames are inspired in classic games from the past
 
 
 
-To-be-finished
+To-do
+
+
+The game will be developed in [TBD] using Rust and ECS...
