@@ -1,12 +1,15 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Main.gdns" type="Script" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=1]
 
-[node name="Node2D" type="Node2D"]
-position = Vector2( 515, 113 )
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 385.0
+margin_top = 232.0
+margin_right = 631.0
+margin_bottom = 332.0
+text = "PLAY"

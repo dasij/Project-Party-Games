@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://maps/board/Board.gd" type="Script" id=1]
+[ext_resource path="res://maps/board/tile/Tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://maps/board/Controller.gd" type="Script" id=3]
+[ext_resource path="res://maps/board/player/BoardPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://maps/board/Tiles.gd" type="Script" id=5]
+[ext_resource path="res://back.jpeg" type="Texture" id=6]
+
+[sub_resource type="Theme" id=1]
+
+[node name="Board" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Decoration"]
+position = Vector2( 576, 348 )
+scale = Vector2( 1.5036, 1.5036 )
+texture = ExtResource( 6 )
+
+[node name="Controller" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Dice" type="Node2D" parent="."]
+
+[node name="Tiles" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Start" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 40, 54 )
+next_tiles_path = [ NodePath("../Tile") ]
+
+[node name="Tile" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 217, 23 )
+next_tiles_path = [ NodePath("../Tile2") ]
+
+[node name="Tile2" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 358, -8 )
+next_tiles_path = [ NodePath("../Tile3") ]
+node_type = 1
+
+[node name="Tile3" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 556, 33 )
+next_tiles_path = [ NodePath("../Tile4") ]
+node_type = 1
+
+[node name="Tile4" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 683, 182 )
+next_tiles_path = [ NodePath("../Tile5") ]
+
+[node name="Tile5" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 763, 372 )
+next_tiles_path = [ NodePath("../Tile6") ]
+
+[node name="Tile6" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 579, 510 )
+next_tiles_path = [ NodePath("../Tile7") ]
+node_type = 1
+
+[node name="Tile7" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 398, 368 )
+next_tiles_path = [ NodePath("../Tile8") ]
+node_type = 1
+
+[node name="Tile8" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 313, 473 )
+next_tiles_path = [ NodePath("../Tile9") ]
+node_type = 1
+
+[node name="Tile9" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 194, 544 )
+next_tiles_path = [ NodePath("../Tile10") ]
+node_type = 1
+
+[node name="Tile10" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 58, 435 )
+next_tiles_path = [ NodePath("../Tile11") ]
+node_type = 1
+
+[node name="Tile11" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 48, 270 )
+next_tiles_path = [ NodePath("../Tile12") ]
+node_type = 1
+
+[node name="Tile12" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 96, 136 )
+next_tiles_path = [ NodePath("../Tile") ]
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player1" parent="Players" instance=ExtResource( 4 )]
+
+[node name="Player2" parent="Players" instance=ExtResource( 4 )]
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Fixed" type="CanvasLayer" parent="UI"]
+
+[node name="Round" type="Label" parent="UI/Fixed"]
+margin_left = 786.0
+margin_top = 20.0
+margin_right = 986.0
+margin_bottom = 67.0
+
+[node name="Dado" type="Label" parent="UI/Fixed"]
+margin_left = 786.0
+margin_top = 105.0
+margin_right = 988.0
+margin_bottom = 150.0
+theme = SubResource( 1 )
+align = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -100
+limit_top = -150
+limit_right = 1150
+limit_bottom = 700
+editor_draw_limits = true

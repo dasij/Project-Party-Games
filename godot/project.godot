@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "BoardPlayer",
+"language": "GDScript",
+"path": "res://maps/board/player/BoardPlayer.gd"
+}, {
+"base": "Node2D",
+"class": "Card",
+"language": "GDScript",
+"path": "res://maps/board/cards/Card.gd"
+}, {
+"base": "Node2D",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://maps/board/tile/Tile.gd"
+} ]
+_global_script_class_icons={
+"BoardPlayer": "",
+"Card": "",
+"Tile": ""
+}
+
 [application]
 
 config/name="PartyGame"
