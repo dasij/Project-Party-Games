@@ -1,7 +1,7 @@
 extends Control
 
-onready var points_label = $Points
-onready var sub_points_label = $SubPoints
+onready var points_label = $Back/Points
+onready var sub_points_label = $Back/SubPoints
 var player = null setget set_player
 
 func set_player(new_player):
@@ -14,7 +14,7 @@ func set_player(new_player):
 	player = new_player
 
 func _on_Player_scored_point(points):
-	points_label.text = "POINTS: %s" % points
+	points_label.text = str(points)
 
 func _on_Player_scored_sub_point(sub_points):
-	sub_points_label.text = "SUBPOINTS: %s" % sub_points
+	sub_points_label.text = str(sub_points)

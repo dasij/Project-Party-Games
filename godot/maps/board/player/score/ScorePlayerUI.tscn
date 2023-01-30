@@ -1,25 +1,106 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://maps/board/player/score/ScorePlayerUI.gd" type="Script" id=1]
+[ext_resource path="res://assets/score_ui/gelatin.png" type="Texture" id=2]
+[ext_resource path="res://assets/score_ui/monster.png" type="Texture" id=3]
+[ext_resource path="res://assets/score_ui/background.png" type="Texture" id=4]
+[ext_resource path="res://assets/score_ui/health_bar.png" type="Texture" id=5]
+[ext_resource path="res://assets/score_ui/coins.png" type="Texture" id=6]
+[ext_resource path="res://resources/ui_themes/fonts/ScoreFont.tres" type="Theme" id=7]
 
 [node name="ScorePlayerUI" type="Control"]
-anchor_right = 0.21
-anchor_bottom = 0.232
-margin_right = -0.0400085
-margin_bottom = -0.200012
+anchor_right = 0.410156
+anchor_bottom = 0.446667
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="Points" type="Label" parent="."]
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_bottom = 3.0
-text = "POINTS: 0"
-valign = 1
+[node name="Back" type="TextureRect" parent="."]
+anchor_left = 0.0653595
+anchor_top = -0.0186916
+anchor_right = 1.01634
+anchor_bottom = 0.981308
+margin_right = 3.05176e-05
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="SubPoints" type="Label" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -3.0
-text = "SUBPOINTS: 0"
+[node name="Gelatina" type="TextureRect" parent="Back"]
+anchor_left = 0.119187
+anchor_top = 0.0914039
+anchor_right = 0.369094
+anchor_bottom = 0.410547
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Coin" type="TextureRect" parent="Back"]
+anchor_left = 0.0999629
+anchor_top = 0.479049
+anchor_right = 0.392162
+anchor_bottom = 0.774982
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Health" type="TextureRect" parent="Back"]
+anchor_left = -0.0701737
+anchor_top = 0.785047
+anchor_right = 0.825648
+anchor_bottom = 1.06357
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Monster" type="TextureRect" parent="Back"]
+anchor_left = 0.673186
+anchor_top = 0.551402
+anchor_right = 1.03459
+anchor_bottom = 1.17808
+margin_left = -1.52588e-05
+margin_bottom = 1.52588e-05
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Points" type="Label" parent="Back"]
+anchor_left = 0.481186
+anchor_top = 0.178529
+anchor_right = 0.604456
+anchor_bottom = 0.334779
+margin_right = 1.52588e-05
+theme = ExtResource( 7 )
+text = "0"
+align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SubPoints" type="Label" parent="Back"]
+anchor_left = 0.478726
+anchor_top = 0.542129
+anchor_right = 0.598913
+anchor_bottom = 0.698379
+margin_right = -1.52588e-05
+theme = ExtResource( 7 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
