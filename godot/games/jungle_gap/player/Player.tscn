@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="Player" type="KinematicBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="HitboxArea" type="Area2D" parent="."]
+
+[node name="ProjectSpawner" type="Position2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="States" type="Node" parent="."]
+
+[node name="Move" type="Node" parent="States"]
+
+[node name="Attack" type="Node" parent="States"]
