@@ -116,6 +116,8 @@ var prev_tiles: Array = [];
 enum NODE_TYPES {
 	BLUE,
 	RED,
+	PINK,
+	BLACK
 }
 
 export(NODE_TYPES) var node_type: int = NODE_TYPES.BLUE setget set_type
@@ -137,6 +139,10 @@ func set_node_material(node_type):
 			$Sprite.texture = preload("res://icon_red.png")
 		NODE_TYPES.BLUE:
 			$Sprite.texture = preload("res://icon.png")
+		NODE_TYPES.PINK:
+			$Sprite.texture = preload("res://icon_pink.png")
+		NODE_TYPES.BLACK:
+			$Sprite.texture = preload("res://icon_black.png")
 		
 
 # TODO
@@ -157,8 +163,37 @@ func draw_linking_lines() -> void:
 			
 
 
-func _process(delta):
-	draw_linking_lines()
+#func _process(delta):
+#	draw_linking_lines()
+
+func play_effect(board, player):
+	match node_type:
+		NODE_TYPES.RED:
+			yield(play_red_effect(board, player), "completed")
+		NODE_TYPES.BLUE:
+			yield(play_blue_effect(board, player), "completed")
+		NODE_TYPES.PINK:
+			yield(play_pink_effect(board, player), "completed")
+		NODE_TYPES.BLACK:
+			yield(play_black_effect(board, player), "completed")
+		
+
+func play_red_effect(board, player):
+	player.score.sub_points -= 3
+	yield(player.animate_rotation(), "completed")
+
+func play_pink_effect(board, player):
+	yield(player.set_actual_tile(self.next_tiles[0]), "completed")
+	yield(player.actual_tile.play_effect(board, player), "completed")
+
+func play_black_effect(board, player):
+	player.hand.add_card(SubPoint.new())
+	yield(player.animate_scale(), "completed")
+
+func play_blue_effect(board, player):
+	player.score.sub_points += 3
+	yield(player.animate_scale(), "completed")
+
 
 func _ready():
 #	set_next_tiles(next_tiles_path)

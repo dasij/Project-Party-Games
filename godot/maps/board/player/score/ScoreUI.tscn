@@ -1,0 +1,65 @@
+[gd_scene format=2]
+
+[node name="ScoreUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Placeholder1" type="Control" parent="."]
+margin_right = 192.0
+margin_bottom = 97.0
+
+[node name="Placeholder2" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -256.0
+margin_right = -64.0
+margin_bottom = 97.0
+
+[node name="Placeholder3" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 68.0
+margin_right = 260.0
+margin_bottom = 97.0
+
+[node name="Placeholder4" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -187.0
+margin_bottom = 97.0
+
+[node name="Placeholder5" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -96.0
+margin_right = 192.0
+margin_bottom = 1.0
+
+[node name="Placeholder6" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -256.0
+margin_top = -96.0
+margin_right = -64.0
+margin_bottom = 1.0
+
+[node name="Placeholder7" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 68.0
+margin_top = -96.0
+margin_right = 260.0
+margin_bottom = 1.0
+
+[node name="Placeholder8" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -187.0
+margin_top = -96.0
+margin_bottom = 1.0

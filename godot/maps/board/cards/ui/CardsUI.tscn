@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://maps/board/cards/ui/CardUI.tscn" type="PackedScene" id=1]
+
+[node name="CardsUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Placeholder1" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -256.0
+margin_top = -152.0
+margin_right = -128.0
+
+[node name="CardUI" parent="Placeholder1" instance=ExtResource( 1 )]
+anchor_left = -0.25
+anchor_top = -0.289474
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+
+[node name="Placeholder2" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -152.0
+margin_right = 64.0
+
+[node name="CardUI" parent="Placeholder2" instance=ExtResource( 1 )]
+anchor_left = -0.140625
+anchor_top = -0.289474
+anchor_right = 1.10938
+anchor_bottom = 1.0
+margin_top = -24.0
+
+[node name="Placeholder3" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 128.0
+margin_top = -152.0
+margin_right = 256.0
+
+[node name="CardUI" parent="Placeholder3" instance=ExtResource( 1 )]
+anchor_top = -0.289474
+anchor_right = 1.25
+anchor_bottom = 1.0
+margin_top = -24.0

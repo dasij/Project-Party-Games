@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://maps/board/Board.gd" type="Script" id=1]
 [ext_resource path="res://maps/board/tile/Tile.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://maps/board/player/BoardPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://maps/board/Tiles.gd" type="Script" id=5]
 [ext_resource path="res://back.jpeg" type="Texture" id=6]
+[ext_resource path="res://maps/board/player/score/ScoreUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://maps/board/cards/ui/CardsUI.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Theme" id=1]
 
@@ -59,12 +61,12 @@ next_tiles_path = [ NodePath("../Tile6") ]
 [node name="Tile6" parent="Tiles" instance=ExtResource( 2 )]
 position = Vector2( 579, 510 )
 next_tiles_path = [ NodePath("../Tile7") ]
-node_type = 1
+node_type = 2
 
 [node name="Tile7" parent="Tiles" instance=ExtResource( 2 )]
 position = Vector2( 398, 368 )
 next_tiles_path = [ NodePath("../Tile8") ]
-node_type = 1
+node_type = 3
 
 [node name="Tile8" parent="Tiles" instance=ExtResource( 2 )]
 position = Vector2( 313, 473 )
@@ -97,24 +99,34 @@ next_tiles_path = [ NodePath("../Tile") ]
 [node name="Player2" parent="Players" instance=ExtResource( 4 )]
 
 [node name="UI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1024.0
+margin_bottom = 596.0
 
-[node name="Fixed" type="CanvasLayer" parent="UI"]
+[node name="Screen" type="CanvasLayer" parent="UI"]
 
-[node name="Round" type="Label" parent="UI/Fixed"]
-margin_left = 786.0
-margin_top = 20.0
-margin_right = 986.0
-margin_bottom = 67.0
+[node name="Round" type="Label" parent="UI/Screen"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -221.0
+margin_top = 11.0
+margin_right = -21.0
+margin_bottom = 58.0
 
-[node name="Dado" type="Label" parent="UI/Fixed"]
-margin_left = 786.0
-margin_top = 105.0
-margin_right = 988.0
-margin_bottom = 150.0
+[node name="Dado" type="Label" parent="UI/Screen"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -231.0
+margin_top = -205.0
+margin_right = -29.0
+margin_bottom = -160.0
 theme = SubResource( 1 )
 align = 2
+
+[node name="ScoreUI" parent="UI/Screen" instance=ExtResource( 7 )]
+
+[node name="CardsUI" parent="UI/Screen" instance=ExtResource( 8 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = -100

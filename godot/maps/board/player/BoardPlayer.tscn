@@ -12,6 +12,7 @@ texture = ExtResource( 2 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2( 0.8, 0.8 )
 limit_left = -100
 limit_top = -150
 limit_right = 1150
