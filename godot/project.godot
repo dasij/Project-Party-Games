@@ -35,6 +35,16 @@ _global_script_classes=[ {
 "path": "res://maps/board/cards/instances/dice/Dice.gd"
 }, {
 "base": "Node",
+"class": "JG_MoveState",
+"language": "GDScript",
+"path": "res://games/jungle_gap/scripts/move.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "JG_Player",
+"language": "GDScript",
+"path": "res://games/jungle_gap/scripts/player.gd"
+}, {
+"base": "Node",
 "class": "PlayerHand",
 "language": "GDScript",
 "path": "res://maps/board/player/hand/PlayerHand.gd"
@@ -65,6 +75,8 @@ _global_script_class_icons={
 "Card": "",
 "CardsCollection": "",
 "Dice": "",
+"JG_MoveState": "",
+"JG_Player": "",
 "PlayerHand": "",
 "Score": "",
 "SubPoint": "",
