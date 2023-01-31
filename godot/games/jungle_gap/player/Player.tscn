@@ -106,7 +106,7 @@ anims/walk = SubResource( 3 )
 
 [node name="Move" type="Node" parent="States"]
 script = ExtResource( 2 )
-walk_speek = 120
+walk_speek = 200
 player = NodePath("../..")
 
 [node name="Attack" type="Node" parent="States"]
