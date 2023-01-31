@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/mini_games/bullets.png" type="Texture" id=1]
+[ext_resource path="res://games/jungle_gap/scripts/fire_projectile.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 4 )
+
+[node name="Fire" type="Area2D"]
+scale = Vector2( 3, 3 )
+script = ExtResource( 2 )
+move_speed = 300
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 2.38419e-07, 2.38419e-07 )
+scale = Vector2( 0.4, 0.4 )
+
+[connection signal="body_entered" from="." to="." method="on_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="on_screen_exited"]

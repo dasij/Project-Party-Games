@@ -34,6 +34,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://maps/board/cards/instances/dice/Dice.gd"
 }, {
+"base": "Area2D",
+"class": "FireProjectile",
+"language": "GDScript",
+"path": "res://games/jungle_gap/scripts/fire_projectile.gd"
+}, {
+"base": "Node",
+"class": "JG_AttackState",
+"language": "GDScript",
+"path": "res://games/jungle_gap/scripts/attack.gd"
+}, {
 "base": "Node",
 "class": "JG_MoveState",
 "language": "GDScript",
@@ -75,6 +85,8 @@ _global_script_class_icons={
 "Card": "",
 "CardsCollection": "",
 "Dice": "",
+"FireProjectile": "",
+"JG_AttackState": "",
 "JG_MoveState": "",
 "JG_Player": "",
 "PlayerHand": "",
@@ -98,6 +110,14 @@ window/stretch/aspect="keep"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [physics]
 

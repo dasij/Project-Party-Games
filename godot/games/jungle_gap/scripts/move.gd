@@ -12,8 +12,6 @@ func move() -> void:
 		return
 		
 	velocity = get_direction() * walk_speek
-	if velocity != Vector2.ZERO:
-		 print(velocity)
 	player.move_and_slide(velocity)
 	
 func get_direction() -> Vector2:
