@@ -17,8 +17,6 @@ func kill() -> void:
 	already_destroyed = true
 	queue_free()
 
-
-
 func on_screen_exited():
 	if not already_destroyed:
 		kill()

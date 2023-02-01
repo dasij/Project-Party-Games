@@ -7,7 +7,7 @@ export(PackedScene) var fire_project
 export(NodePath) onready var animation = get_node(animation) as AnimationPlayer
 
 func attack() -> void:
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("ui_select") or Input.is_action_just_pressed("attack"):
 		#player.is_attacking = true
 		animation.play("fire")
 
