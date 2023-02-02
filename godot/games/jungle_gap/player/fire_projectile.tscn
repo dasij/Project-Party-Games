@@ -9,7 +9,8 @@ extents = Vector2( 4, 4 )
 [node name="Fire" type="Area2D"]
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
-move_speed = 750
+damage_base = 3
+move_speed = 550
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

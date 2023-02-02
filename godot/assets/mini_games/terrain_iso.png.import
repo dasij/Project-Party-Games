@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player1_jg.png-b70c8f33665bd506d9cdd1d433f84b02.stex"
+path="res://.import/terrain_iso.png-323add0f1b21c61724d3a66f47154c72.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mini_games/player1_jg.png"
-dest_files=[ "res://.import/player1_jg.png-b70c8f33665bd506d9cdd1d433f84b02.stex" ]
+source_file="res://assets/mini_games/terrain_iso.png"
+dest_files=[ "res://.import/terrain_iso.png-323add0f1b21c61724d3a66f47154c72.stex" ]
 
 [params]
 
