@@ -11,4 +11,6 @@ static func get_random_card():
 	var idx := 0
 	if cards_size > 0:
 		idx = Util.randi_from_range(0, cards.size() - 1)
-	return cards[idx]
+	var card_type = cards[idx]
+	var card = card_type.new()
+	return card

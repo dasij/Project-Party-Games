@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://maps/board/cards/ui/CardUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://maps/board/cards/ui/draggable/DraggableCard.gd" type="Script" id=2]
+
+[node name="DraggableCard" type="Control"]
+anchor_right = 0.100586
+anchor_bottom = 0.246667
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CardUI" parent="." instance=ExtResource( 1 )]
+anchor_right = 1.0
+anchor_bottom = 1.0

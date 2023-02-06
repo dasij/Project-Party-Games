@@ -1,39 +1,38 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://maps/board/cards/ui/CardUI.gd" type="Script" id=1]
-[ext_resource path="res://resources/ui_themes/fonts/CardFont.tres" type="Theme" id=2]
+[ext_resource path="res://resources/ui_themes/cards/Card.tres" type="Theme" id=2]
 [ext_resource path="res://card.jpeg" type="Texture" id=3]
 
-[node name="CardUI" type="NinePatchRect"]
-anchor_right = 0.168945
-anchor_bottom = 0.37
+[node name="CardUI" type="TextureRect"]
+anchor_right = 0.100586
+anchor_bottom = 0.246667
+theme = ExtResource( 2 )
 texture = ExtResource( 3 )
-patch_margin_left = 10
-patch_margin_top = 20
-patch_margin_right = 15
-patch_margin_bottom = 21
+expand = true
+stretch_mode = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Title" type="Label" parent="."]
-anchor_left = 0.236994
-anchor_top = 0.391892
-anchor_right = 0.809249
-anchor_bottom = 0.454955
-theme = ExtResource( 2 )
+anchor_left = 0.237179
+anchor_top = 0.382883
+anchor_right = 0.807692
+anchor_bottom = 0.459459
+text = "Teste"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Description" type="Label" parent="."]
-anchor_left = 0.0809249
+anchor_left = 0.115385
 anchor_top = 0.490991
-anchor_right = 0.919075
-anchor_bottom = 0.891892
-theme = ExtResource( 2 )
+anchor_right = 0.865385
+anchor_bottom = 0.887387
+text = "Sou vasco da gama tantas vezes campeão!"
 align = 1
 autowrap = true
 __meta__ = {
