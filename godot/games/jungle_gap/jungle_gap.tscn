@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://games/jungle_gap/player/dargao.tscn" type="PackedScene" id=1]
+[ext_resource path="res://games/jungle_gap/player/Player.tscn" type="PackedScene" id=2]
+
+[node name="JungleGap" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 392, 374 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Dragao" parent="." instance=ExtResource( 1 )]
+position = Vector2( 525, 95 )
