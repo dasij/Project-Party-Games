@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://maps/board/Board.gd" type="Script" id=1]
 [ext_resource path="res://maps/board/tile/Tile.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://maps/board/player/score/ScoreUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://maps/board/cards/ui/planning/PlanningUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://maps/board/cards/ui/play/PlayUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://maps/board/cards/ui/discard/DiscardUI.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Theme" id=1]
 
@@ -134,6 +135,10 @@ anchor_bottom = 1.0
 [node name="Planning" parent="UI/Screen/Phases" instance=ExtResource( 8 )]
 
 [node name="Play" parent="UI/Screen/Phases" instance=ExtResource( 9 )]
+visible = false
+
+[node name="DiscardUI" parent="UI/Screen/Phases" instance=ExtResource( 10 )]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = -100

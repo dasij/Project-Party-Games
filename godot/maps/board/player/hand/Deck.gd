@@ -21,13 +21,15 @@ func reset_hand():
 	print_debug("reset_hand", deck, hand)
 
 func add_card_to_deck(card: Card):
-	if deck.size() <= 5:
-		deck.append(card)
-		emit_signal("added_to_deck", card, deck.size() - 1)
-	else:
-		# TODO: let player choose what card he will discard
-		print("limit exceeded")
+	deck.append(card)
+	emit_signal("added_to_deck", card, deck.size() - 1)
 	print_debug("add_card_to_deck", deck, hand)
+
+func remove_card(card: Card):
+	var deck_idx = deck.find(card)
+	if deck_idx != -1:
+		deck.remove(deck_idx)
+		emit_signal("removed_from_deck", card, deck_idx)
 
 func remove_card_from_hand(hand_idx):
 	if hand_idx < hand.size() and hand_idx >= 0:
