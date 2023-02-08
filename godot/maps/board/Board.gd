@@ -8,6 +8,7 @@ onready var LabelRound = $UI/Screen/Round
 
 onready var Players := $Players.get_children()
 
+onready var Title = $UI/Screen/Title
 onready var ScoreUI := $UI/Screen/ScoreUI
 
 onready var PlanningUI := $UI/Screen/Phases/Planning
@@ -34,6 +35,10 @@ func setup_game(players):
 		player.connect("walked", self, "_on_Player_walked")
 		player.actual_tile = start_tile
 
+func transition_to_pre_turn(player: BoardPlayer) -> void:
+	var title := "Starting %s's turn" % player.nick
+	yield(Title.play_title(title), "completed")
+
 func pre_turn(player: BoardPlayer):
 	give_player_random_card(player)
 	give_player_random_card(player)
@@ -58,6 +63,9 @@ func turn(player: BoardPlayer):
 	yield(player.play_turn(self), "completed")
 	PlayUI.hide()
 
+func transition_to_turn(player: BoardPlayer) -> void:
+	yield(Title.play_title("Playing turn"), "completed")
+
 func post_turn(player: BoardPlayer):
 	yield(discard_phase(player), "completed")
 
@@ -74,7 +82,9 @@ func game_round(players):
 	for player in players:
 		player = player as BoardPlayer
 		player.camera.make_current()
+		yield(transition_to_pre_turn(player), "completed")
 		yield(pre_turn(player), "completed")
+		yield(transition_to_turn(player), "completed")
 		yield(turn(player), "completed")
 		yield(post_turn(player), "completed")
 		yield(get_tree().create_timer(1), "timeout")

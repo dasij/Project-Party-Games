@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://maps/board/Board.gd" type="Script" id=1]
 [ext_resource path="res://maps/board/tile/Tile.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://maps/board/cards/ui/planning/PlanningUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://maps/board/cards/ui/play/PlayUI.tscn" type="PackedScene" id=9]
 [ext_resource path="res://maps/board/cards/ui/discard/DiscardUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://maps/board/ui/title/Title.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Theme" id=1]
 
@@ -97,8 +98,10 @@ next_tiles_path = [ NodePath("../Tile") ]
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Player1" parent="Players" instance=ExtResource( 4 )]
+nick = "Vasco"
 
 [node name="Player2" parent="Players" instance=ExtResource( 4 )]
+nick = "Gama"
 
 [node name="UI" type="Control" parent="."]
 margin_right = 1024.0
@@ -133,12 +136,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Planning" parent="UI/Screen/Phases" instance=ExtResource( 8 )]
+visible = false
 
 [node name="Play" parent="UI/Screen/Phases" instance=ExtResource( 9 )]
 visible = false
 
 [node name="DiscardUI" parent="UI/Screen/Phases" instance=ExtResource( 10 )]
 visible = false
+
+[node name="Title" parent="UI/Screen" instance=ExtResource( 11 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = -100

@@ -9,7 +9,7 @@ signal do_action
 onready var animation: Tween = $Tween
 onready var camera: Camera2D = $Camera2D
 
-var player_name: String = ""
+export var nick: String = ""
 var actual_tile: Tile = null setget set_actual_tile
 var deck  := Deck.new()
 var score := Score.new()
