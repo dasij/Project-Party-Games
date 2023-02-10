@@ -16,8 +16,16 @@ func _ready():
 	health_bar.init_bar(health)
 
 func on_area_entered(area):
-	health -= 10
-	health_bar.update_value(health)
-	
-
-
+	print(area.distancia_perc)
+	if area.distancia_perc < 22:
+		print("a")
+		health -= 25
+		health_bar.update_value(health)
+	elif area.distancia_perc > 22 and area.distancia_perc < 38:
+		print("b")
+		health -= 15
+		health_bar.update_value(health)
+	else:
+		print("c")
+		health -= 5
+		health_bar.update_value(health)

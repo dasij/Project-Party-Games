@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/mini_games/helah_bar.tres" type="Texture" id=1]
 [ext_resource path="res://assets/mini_games/dragao.png" type="Texture" id=2]
 [ext_resource path="res://games/jungle_gap/scripts/hit_box_dragon.gd" type="Script" id=3]
 [ext_resource path="res://games/jungle_gap/scripts/dragon_jg.gd" type="Script" id=4]
 [ext_resource path="res://games/jungle_gap/scripts/health_bar.gd" type="Script" id=5]
+[ext_resource path="res://games/jungle_gap/scripts/bite_box.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 30.0
@@ -41,9 +42,12 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 46.0
-height = 62.0
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 33.0
+height = 60.0
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 160, 48.75 )
 
 [node name="DragonJG" type="KinematicBody2D"]
 script = ExtResource( 4 )
@@ -58,10 +62,10 @@ position = Vector2( -14, 6 )
 shape = SubResource( 4 )
 
 [node name="HealthBar" type="TextureProgress" parent="."]
-margin_left = -40.0
-margin_top = -80.0
-margin_right = 8.0
-margin_bottom = -64.0
+margin_left = -41.0
+margin_top = 75.0
+margin_right = 7.0
+margin_bottom = 91.0
 rect_scale = Vector2( 1.6, 1 )
 value = 80.0
 texture_under = ExtResource( 1 )
@@ -85,8 +89,16 @@ health = 100
 health_bar = NodePath("../HealthBar")
 
 [node name="Collision" type="CollisionShape2D" parent="HitBox"]
-position = Vector2( -14, 7 )
-shape = SubResource( 1 )
+position = Vector2( -14, 6 )
+shape = SubResource( 5 )
+
+[node name="BiteBox" type="Area2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BiteBox"]
+position = Vector2( 1, 120.25 )
+shape = SubResource( 6 )
 
 [connection signal="area_entered" from="HitBox" to="HitBox" method="on_area_entered"]
-[connection signal="body_entered" from="HitBox" to="HitBox" method="on_body_entered"]
+[connection signal="body_entered" from="HitBox" to="HitBox" method="on_hitbox_body_entered"]
+[connection signal="body_entered" from="BiteBox" to="BiteBox" method="on_bitebox_body_entered"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/terrain_iso.png-323add0f1b21c61724d3a66f47154c72.stex"
+path="res://.import/big_explosion.png-69230b09f0696aa904c832f72af46135.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mini_games/terrain_iso.png"
-dest_files=[ "res://.import/terrain_iso.png-323add0f1b21c61724d3a66f47154c72.stex" ]
+source_file="res://assets/mini_games/big_explosion.png"
+dest_files=[ "res://.import/big_explosion.png-69230b09f0696aa904c832f72af46135.stex" ]
 
 [params]
 

@@ -8,6 +8,7 @@ export(int) var walk_speek
 export(NodePath) onready var player = get_node(player) as KinematicBody2D
 export(NodePath) onready var sprite = get_node(sprite) as Sprite
 export(NodePath) onready var spawn = get_node(spawn) as Position2D
+export(NodePath) onready var animation = get_node(animation) as AnimationPlayer
 
 func move() -> void:
 	if player.is_attacking:
@@ -25,15 +26,16 @@ func get_direction() -> Vector2:
 		if dir.x > 0:
 			sprite.flip_h = false
 			spawn.position.x = 60
-			
 		elif dir.x < 0:
 			sprite.flip_h = true
 			spawn.position.x = -45
 			
 		if dir.y > 0:
-			sprite.frame = 0
+			animation.play("walk")
+			
 		elif dir.y < 0:
-			sprite.frame = 1	
+			animation.play("walk_up")
+			
 				
 		return dir
 #		var mouse = player.get_global_mouse_position()
