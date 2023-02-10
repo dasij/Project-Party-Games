@@ -187,7 +187,8 @@ func play_pink_effect(board, player):
 	yield(player.actual_tile.play_effect(board, player), "completed")
 
 func play_black_effect(board, player):
-	player.hand.add_card(SubPoint.new())
+	var random_card = CardsCollection.get_random_card()
+	player.deck.add_card_to_deck(random_card)
 	yield(player.animate_scale(), "completed")
 
 func play_blue_effect(board, player):

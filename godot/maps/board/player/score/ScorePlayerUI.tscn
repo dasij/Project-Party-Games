@@ -79,9 +79,9 @@ __meta__ = {
 
 [node name="Points" type="Label" parent="Back"]
 anchor_left = 0.481186
-anchor_top = 0.178529
+anchor_top = 0.15241
 anchor_right = 0.604456
-anchor_bottom = 0.334779
+anchor_bottom = 0.30866
 margin_right = 1.52588e-05
 theme = ExtResource( 7 )
 text = "0"

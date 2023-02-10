@@ -15,6 +15,9 @@ export(CARD_TYPE) var card_type = CARD_TYPE.DICE
 export(String) var title = "";
 export(String) var description = "";
 
+func _to_string():
+	return self.title
+
 func effect(board, player):
 	pass
 

@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://resources/fonts/roboto.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 7
+use_filter = true
+font_data = SubResource( 1 )
+
+[resource]
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 2 )

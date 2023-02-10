@@ -9,9 +9,9 @@ signal do_action
 onready var animation: Tween = $Tween
 onready var camera: Camera2D = $Camera2D
 
-var player_name: String = ""
+export var nick: String = ""
 var actual_tile: Tile = null setget set_actual_tile
-var hand := PlayerHand.new()
+var deck  := Deck.new()
 var score := Score.new()
 
 func set_actual_tile(new_tile: Tile):
@@ -39,11 +39,10 @@ func move_to_tile(new_tile: Tile):
 	emit_signal("walked")
 
 func play_turn(board):
-	camera.current = true
-	for card in hand.cards:
+	for card in deck.hand:
 		yield(self, "do_action")
 		yield(card.play_effect(board, self), "completed")
-	camera.current = false
+	deck.reset_hand()
 
 func _input(event):
 	if(event.is_action_pressed("ui_accept") and not event.is_echo()):
