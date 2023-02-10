@@ -3,6 +3,8 @@ class_name Board
 
 export var max_round: int = 12
 
+onready var GlobalCamera := $GlobalCamera
+
 onready var LabelDado = $UI/Screen/Dado
 onready var LabelRound = $UI/Screen/Round
 
@@ -11,11 +13,16 @@ onready var Players := $Players.get_children()
 onready var Title = $UI/Screen/Title
 onready var ScoreUI := $UI/Screen/ScoreUI
 
+onready var Phases := $UI/Screen/Phases
 onready var PlanningUI := $UI/Screen/Phases/Planning
 onready var PlayUI := $UI/Screen/Phases/Play
 onready var DiscardUI := $UI/Screen/Phases/DiscardUI
 
 signal round_started
+
+var state = {
+	"actual_player": null
+}
 
 func setup_game(players):
 	var start_tile = $Tiles/Start as Tile
@@ -36,6 +43,11 @@ func setup_game(players):
 		player.actual_tile = start_tile
 
 func transition_to_pre_turn(player: BoardPlayer) -> void:
+	# move camera to player and deactivate GlobalCamera if its on
+	GlobalCamera.deactivate(player.camera)
+	# show phases ui
+	Phases.visible = true
+	# show title transitions
 	var title := "Starting %s's turn" % player.nick
 	yield(Title.play_title(title), "completed")
 
@@ -81,13 +93,18 @@ func discard_phase(player):
 func game_round(players):
 	for player in players:
 		player = player as BoardPlayer
-		player.camera.make_current()
+		state.actual_player = player
 		yield(transition_to_pre_turn(player), "completed")
 		yield(pre_turn(player), "completed")
 		yield(transition_to_turn(player), "completed")
 		yield(turn(player), "completed")
 		yield(post_turn(player), "completed")
 		yield(get_tree().create_timer(1), "timeout")
+
+func _input(event):
+	if(event.is_action_pressed("ui_select") and not event.is_echo()):
+		Phases.visible = not Phases.visible
+		GlobalCamera.toggle(state.actual_player.camera)
 
 func _ready():
 	connect("round_started", self, "_on_Board_round_started")
