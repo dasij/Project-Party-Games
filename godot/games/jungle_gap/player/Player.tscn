@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/mini_games/mira.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 27.5, 30 )
+extents = Vector2( 29.375, 28.75 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -148,7 +148,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 30, 31.25 )
+extents = Vector2( 29.375, 28.75 )
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 scale = Vector2( 0.8, 0.8 )
@@ -162,9 +162,9 @@ hframes = 10
 vframes = 2
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 7.5, 2.5 )
+position = Vector2( 6.875, 2.5 )
+scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 5 )
-disabled = true
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -177,11 +177,12 @@ anims/walk_up = SubResource( 7 )
 
 [node name="HitboxArea" type="Area2D" parent="."]
 script = ExtResource( 6 )
+player1 = NodePath("..")
 
 [node name="CollisionHitBox" type="CollisionShape2D" parent="HitboxArea"]
-position = Vector2( 6.87499, 2.5 )
+position = Vector2( 6.875, 2.5 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
-disabled = true
 
 [node name="ProjectSpawner" type="Position2D" parent="."]
 position = Vector2( 55, 0 )
@@ -214,3 +215,5 @@ scale = Vector2( 2, 2 )
 [node name="Sprite" type="Sprite" parent="Mira"]
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 7 )
+
+[connection signal="area_entered" from="HitboxArea" to="HitboxArea" method="_on_HitboxArea_area_entered"]
