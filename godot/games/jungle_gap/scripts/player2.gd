@@ -67,14 +67,12 @@ func move_mira() -> void:
 		mira.position.x = mira.position.x + (dir.x * 10)
 		mira.position.y = mira.position.y + (dir.y * 10)
 
-func on_fall_body_entered(body):
-	#print(body)
-	
-	if body.get_name() == "Player2":
+
+func _on_HitboxArea_body_entered(body):
+	print(body)
+	var body_name = body.get_name()
+	if body_name == "Player2":
 		return
 	
 	animation.play("fall")
 	#queue_free()
-	
-	#get_tree().reload_current_scene()
-	

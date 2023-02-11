@@ -7,7 +7,7 @@
 [ext_resource path="res://games/jungle_gap/player/fire_projectile.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 30, 31.25 )
+extents = Vector2( 26.25, 28.75 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -146,7 +146,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 30, 31.25 )
+extents = Vector2( 29.0625, 30.9375 )
 
 [node name="Player2" type="KinematicBody2D" groups=["Player"]]
 scale = Vector2( 0.8, 0.8 )
@@ -198,4 +198,3 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
 
 [connection signal="area_entered" from="HitboxArea" to="HitboxArea" method="_on_HitboxArea_area_entered"]
-[connection signal="body_entered" from="HitboxArea" to="." method="on_fall_body_entered"]

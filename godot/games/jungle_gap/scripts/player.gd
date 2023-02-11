@@ -10,6 +10,9 @@ onready var sprite: Sprite = get_node("Sprite")
 
 var is_attacking: bool = false
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 func _physics_process(_delta: float) -> void:
 	move_state.move()
 	attack_state.attack()
@@ -29,13 +32,20 @@ func move_mira() -> void:
 
 func on_fall_body_entered(body):
 	print(body)
-	if body is DragonJG:
-		return
-	
-	animation.play("fall")
+	var body_name = body.get_name()
+	if body_name == "Player":
+		animation.play("fall")
+		print("Player1 volta pro centro")
+		body.global_position = Vector2 (427, 344)
+		
+	if body_name == "Player2":
+		animation.play("fall")
+		print("Player2 volta pro centro")
+		body.global_position = Vector2 (732, 344)
+
 	#queue_free()
 	
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
 	
 		
 	#set_physics_process(true)

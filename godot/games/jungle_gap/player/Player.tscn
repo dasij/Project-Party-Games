@@ -39,7 +39,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=8]
 resource_name = "fall"
-length = 5.0
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -47,24 +47,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8 ),
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 30, 31, 32, 3, 34, 35, 36, 37, 38, 39 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ false ],
-"method": "set_physics_process"
-} ]
+"values": [ 30, 32, 31, 3, 34, 35, 36, 37, 38, 39 ]
 }
 
 [sub_resource type="Animation" id=1]
@@ -181,7 +167,6 @@ player1 = NodePath("..")
 
 [node name="CollisionHitBox" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2( 6.875, 2.5 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
 
 [node name="ProjectSpawner" type="Position2D" parent="."]
