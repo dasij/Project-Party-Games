@@ -5,7 +5,6 @@ export var max_round: int = 12
 
 onready var GlobalCamera := $GlobalCamera
 
-onready var LabelDado = $UI/Screen/Dado
 onready var LabelRound = $UI/Screen/Round
 
 onready var Players := $Players.get_children()
@@ -39,7 +38,6 @@ func setup_game(players):
 	
 	for player in players:
 		player = player as BoardPlayer
-		player.connect("walked", self, "_on_Player_walked")
 		player.actual_tile = start_tile
 
 func transition_to_pre_turn(player: BoardPlayer) -> void:
@@ -80,6 +78,7 @@ func transition_to_turn(player: BoardPlayer) -> void:
 
 func post_turn(player: BoardPlayer):
 	yield(discard_phase(player), "completed")
+	
 
 func discard_phase(player):
 	if player.deck.deck.size() > 5:
@@ -100,6 +99,7 @@ func game_round(players):
 		yield(turn(player), "completed")
 		yield(post_turn(player), "completed")
 		yield(get_tree().create_timer(1), "timeout")
+		BoardEvent.emit_signal("turn_ended")
 
 func _input(event):
 	if(event.is_action_pressed("ui_select") and not event.is_echo()):
@@ -113,12 +113,6 @@ func _ready():
 	for round_i in max_round:
 		emit_signal("round_started", round_i, max_round)
 		yield(game_round(Players), "completed")
-
-func _on_Dice_playing_dice():
-	LabelDado.text = "Rolando dado"
-
-func _on_Player_walked():
-	LabelDado.text = "Dado rolou\nAndando..."
 
 func _on_Board_round_started(round_i, max_round):
 	LabelRound.text = "Round %s/%s" % [round_i + 1, max_round]
