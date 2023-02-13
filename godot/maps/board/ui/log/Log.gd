@@ -25,5 +25,4 @@ func _on_CardEvent_logged(text: String) -> void:
 	self.text += text + "\n"
 
 func _on_BoardEvent_turn_ended():
-	print_debug("here")
 	clear_last_logs()
