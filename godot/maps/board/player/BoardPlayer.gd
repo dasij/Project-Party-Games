@@ -16,6 +16,7 @@ var score := Score.new()
 
 func set_actual_tile(new_tile: Tile):
 	if actual_tile == null:
+		self.position = new_tile.position
 		actual_tile = new_tile
 	elif new_tile == null:
 		actual_tile = actual_tile

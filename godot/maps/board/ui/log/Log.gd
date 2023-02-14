@@ -17,10 +17,11 @@ func write_logs(logs: Array):
 		self.text += stored_log + "\n"
 
 func _ready():
-	CardEvent.connect("record", self, "_on_CardEvent_logged")
+	TileEvent.connect("record", self, "_on_Event_logged")
+	CardEvent.connect("record", self, "_on_Event_logged")
 	BoardEvent.connect("turn_ended", self, "_on_BoardEvent_turn_ended")
 
-func _on_CardEvent_logged(text: String) -> void:
+func _on_Event_logged(text: String) -> void:
 	logs.append(text)
 	self.text += text + "\n"
 

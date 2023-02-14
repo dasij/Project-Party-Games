@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://maps/board/Board.gd" type="Script" id=1]
-[ext_resource path="res://maps/board/tile/Tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://maps/board/tile/instances/pink/PinkTile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/board/Controller.gd" type="Script" id=3]
 [ext_resource path="res://maps/board/player/BoardPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://maps/board/Tiles.gd" type="Script" id=5]
@@ -13,6 +13,9 @@
 [ext_resource path="res://maps/board/ui/title/Title.tscn" type="PackedScene" id=11]
 [ext_resource path="res://maps/board/ui/camera/GlobalCamera.tscn" type="PackedScene" id=12]
 [ext_resource path="res://maps/board/ui/log/Log.tscn" type="PackedScene" id=13]
+[ext_resource path="res://maps/board/tile/instances/blue/BlueTile.tscn" type="PackedScene" id=14]
+[ext_resource path="res://maps/board/tile/instances/red/RedTile.tscn" type="PackedScene" id=15]
+[ext_resource path="res://maps/board/tile/instances/black/BlackTile.tscn" type="PackedScene" id=16]
 
 [node name="Board" type="Node2D"]
 script = ExtResource( 1 )
@@ -35,65 +38,57 @@ script = ExtResource( 3 )
 [node name="Tiles" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="Start" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 40, 54 )
+[node name="Start" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 67, 106 )
 next_tiles_path = [ NodePath("../Tile") ]
 
-[node name="Tile" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 217, 23 )
+[node name="Tile" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 214, 44 )
 next_tiles_path = [ NodePath("../Tile2") ]
 
-[node name="Tile2" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 358, -8 )
+[node name="Tile7" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 140, 407 )
+next_tiles_path = [ NodePath("../Tile8") ]
+
+[node name="Tile5" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 542, 50 )
 next_tiles_path = [ NodePath("../Tile3") ]
-node_type = 1
 
-[node name="Tile3" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 556, 33 )
-next_tiles_path = [ NodePath("../Tile4") ]
-node_type = 1
+[node name="Tile9" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 726, 315 )
+next_tiles_path = [ NodePath("../Tile10") ]
 
-[node name="Tile4" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 683, 182 )
+[node name="Tile2" parent="Tiles" instance=ExtResource( 15 )]
+position = Vector2( 376, -12 )
 next_tiles_path = [ NodePath("../Tile5") ]
 
-[node name="Tile5" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 763, 372 )
+[node name="Tile12" parent="Tiles" instance=ExtResource( 15 )]
+position = Vector2( 525, 514 )
 next_tiles_path = [ NodePath("../Tile6") ]
 
-[node name="Tile6" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 579, 510 )
-next_tiles_path = [ NodePath("../Tile7") ]
-node_type = 2
+[node name="Tile8" parent="Tiles" instance=ExtResource( 15 )]
+position = Vector2( 79, 239 )
+next_tiles_path = [ NodePath("../Tile") ]
 
-[node name="Tile7" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 398, 368 )
-next_tiles_path = [ NodePath("../Tile8") ]
-node_type = 3
-
-[node name="Tile8" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 313, 473 )
+[node name="Tile3" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 635, 142 )
 next_tiles_path = [ NodePath("../Tile9") ]
-node_type = 1
 
-[node name="Tile9" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 194, 544 )
-next_tiles_path = [ NodePath("../Tile10") ]
-node_type = 1
-
-[node name="Tile10" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 58, 435 )
-next_tiles_path = [ NodePath("../Tile11") ]
-node_type = 1
+[node name="Tile6" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 397, 362 )
+next_tiles_path = [ NodePath("../Tile4") ]
 
 [node name="Tile11" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 48, 270 )
+position = Vector2( 715, 660 )
 next_tiles_path = [ NodePath("../Tile12") ]
-node_type = 1
 
-[node name="Tile12" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 96, 136 )
-next_tiles_path = [ NodePath("../Tile") ]
+[node name="Tile4" parent="Tiles" instance=ExtResource( 16 )]
+position = Vector2( 271, 460 )
+next_tiles_path = [ NodePath("../Tile7") ]
+
+[node name="Tile10" parent="Tiles" instance=ExtResource( 16 )]
+position = Vector2( 753, 508 )
+next_tiles_path = [ NodePath("../Tile11") ]
 
 [node name="Players" type="Node2D" parent="."]
 
