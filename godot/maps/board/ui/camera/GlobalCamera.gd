@@ -8,26 +8,15 @@ export var zoom_min := 0.75
 export var zoom_max := 1.15
 
 var velocity := Vector2.ZERO
-var active := false
-
-func toggle(camera: Camera2D) -> void:
-	if active:
-		deactivate(camera)
-	else:
-		activate()
 
 func activate() -> void:
-	if GlobalCamera != null:
-		GlobalCamera.make_current()
-		self.set_process(true)
-		active = true
+	self.set_process(true)
 
-func deactivate(camera: Camera2D) -> void:
-	if GlobalCamera != null:
-		GlobalCamera.current = false
-		camera.make_current()
-		self.set_process(false)
-		active = false
+func deactivate() -> void:
+	self.set_process(false)
+
+func get_camera():
+	return GlobalCamera 
 
 func get_input() -> void:
 	var viewport_size := get_viewport().size / 2
@@ -60,3 +49,6 @@ func get_input() -> void:
 func _process(delta):
 	get_input()
 	velocity = move_and_slide(velocity)
+
+func _ready():
+	GlobalCamera.align()

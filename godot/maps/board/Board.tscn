@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://maps/board/Board.gd" type="Script" id=1]
 [ext_resource path="res://maps/board/tile/instances/pink/PinkTile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://maps/board/Controller.gd" type="Script" id=3]
+[ext_resource path="res://maps/board/CameraController.gd" type="Script" id=3]
 [ext_resource path="res://maps/board/player/BoardPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://maps/board/Tiles.gd" type="Script" id=5]
 [ext_resource path="res://back.jpeg" type="Texture" id=6]
@@ -16,6 +16,8 @@
 [ext_resource path="res://maps/board/tile/instances/blue/BlueTile.tscn" type="PackedScene" id=14]
 [ext_resource path="res://maps/board/tile/instances/red/RedTile.tscn" type="PackedScene" id=15]
 [ext_resource path="res://maps/board/tile/instances/black/BlackTile.tscn" type="PackedScene" id=16]
+[ext_resource path="res://maps/board/ui/camera/TransitionCamera.tscn" type="PackedScene" id=17]
+[ext_resource path="res://maps/board/Phases.gd" type="Script" id=18]
 
 [node name="Board" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,9 +31,6 @@ __meta__ = {
 position = Vector2( 576, 348 )
 scale = Vector2( 1.5036, 1.5036 )
 texture = ExtResource( 6 )
-
-[node name="Controller" type="Node2D" parent="."]
-script = ExtResource( 3 )
 
 [node name="Dice" type="Node2D" parent="."]
 
@@ -117,6 +116,7 @@ margin_bottom = 58.0
 [node name="Phases" type="Control" parent="UI/Screen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 18 )
 
 [node name="Planning" parent="UI/Screen/Phases" instance=ExtResource( 8 )]
 visible = false
@@ -139,5 +139,10 @@ margin_top = -253.0
 margin_right = 0.0
 margin_bottom = -83.0
 
-[node name="GlobalCamera" parent="." instance=ExtResource( 12 )]
-position = Vector2( 523, 291 )
+[node name="CameraController" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="GlobalCamera" parent="CameraController" instance=ExtResource( 12 )]
+position = Vector2( 519, 233 )
+
+[node name="TransitionCamera" parent="CameraController" instance=ExtResource( 17 )]

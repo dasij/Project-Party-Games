@@ -125,6 +125,7 @@ config/icon="res://icon.png"
 CardEvent="*res://maps/board/events/CardEvent.gd"
 BoardEvent="*res://maps/board/events/BoardEvent.gd"
 TileEvent="*res://maps/board/events/TileEvent.gd"
+CameraEvent="*res://maps/board/events/CameraEvent.gd"
 
 [display]
 

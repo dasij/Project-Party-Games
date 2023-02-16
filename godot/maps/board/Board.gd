@@ -3,8 +3,6 @@ class_name Board
 
 export var max_round: int = 12
 
-onready var GlobalCamera := $GlobalCamera
-
 onready var LabelRound = $UI/Screen/Round
 
 onready var Players := $Players.get_children()
@@ -41,18 +39,11 @@ func setup_game(players):
 		player.actual_tile = start_tile
 
 func transition_to_pre_turn(player: BoardPlayer) -> void:
-	# move camera to player and deactivate GlobalCamera if its on
-	GlobalCamera.deactivate(player.camera)
-	# show phases ui
-	Phases.visible = true
 	# show title transitions
 	var title := "Starting %s's turn" % player.nick
 	yield(Title.play_title(title), "completed")
 
 func pre_turn(player: BoardPlayer):
-	give_player_random_card(player)
-	give_player_random_card(player)
-	give_player_random_card(player)
 	give_player_random_card(player)
 	yield(planning_phase(player), "completed")
 	pass
@@ -93,6 +84,7 @@ func game_round(players):
 	for player in players:
 		player = player as BoardPlayer
 		state.actual_player = player
+		BoardEvent.emit_signal("turn_started", player)
 		yield(transition_to_pre_turn(player), "completed")
 		yield(pre_turn(player), "completed")
 		yield(transition_to_turn(player), "completed")
@@ -100,11 +92,6 @@ func game_round(players):
 		yield(post_turn(player), "completed")
 		yield(get_tree().create_timer(1), "timeout")
 		BoardEvent.emit_signal("turn_ended")
-
-func _input(event):
-	if(event.is_action_pressed("ui_select") and not event.is_echo()):
-		Phases.visible = not Phases.visible
-		GlobalCamera.toggle(state.actual_player.camera)
 
 func _ready():
 	connect("round_started", self, "_on_Board_round_started")

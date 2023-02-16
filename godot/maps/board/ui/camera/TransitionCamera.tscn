@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://maps/board/ui/camera/TransitionCamera.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0, 0 )
+
+[node name="TransitionCamera" type="RigidBody2D"]
+mode = 1
+script = ExtResource( 1 )
+
+[node name="TransitionCamera" type="Camera2D" parent="."]
+limit_left = -100
+limit_top = -150
+limit_right = 1150
+limit_bottom = 750
+editor_draw_limits = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]

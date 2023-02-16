@@ -14,6 +14,9 @@ var actual_tile: Tile = null setget set_actual_tile
 var deck  := Deck.new()
 var score := Score.new()
 
+func get_camera() -> Camera2D:
+	return camera
+
 func set_actual_tile(new_tile: Tile):
 	if actual_tile == null:
 		self.position = new_tile.position
