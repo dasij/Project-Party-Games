@@ -10,7 +10,6 @@ onready var Players := $Players.get_children()
 onready var Title = $UI/Screen/Title
 onready var ScoreUI := $UI/Screen/ScoreUI
 
-onready var Phases := $UI/Screen/Phases
 onready var PlanningUI := $UI/Screen/Phases/Planning
 onready var PlayUI := $UI/Screen/Phases/Play
 onready var DiscardUI := $UI/Screen/Phases/DiscardUI
