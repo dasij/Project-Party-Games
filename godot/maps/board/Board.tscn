@@ -34,74 +34,12 @@ texture = ExtResource( 6 )
 
 [node name="Dice" type="Node2D" parent="."]
 
-[node name="Tiles" type="Node2D" parent="."]
-script = ExtResource( 5 )
-
-[node name="Start" parent="Tiles" instance=ExtResource( 14 )]
-position = Vector2( 67, 106 )
-next_tiles_path = [ NodePath("../Tile") ]
-
-[node name="Tile" parent="Tiles" instance=ExtResource( 14 )]
-position = Vector2( 214, 44 )
-next_tiles_path = [ NodePath("../Tile2") ]
-
-[node name="Tile7" parent="Tiles" instance=ExtResource( 14 )]
-position = Vector2( 140, 407 )
-next_tiles_path = [ NodePath("../Tile8") ]
-
-[node name="Tile5" parent="Tiles" instance=ExtResource( 14 )]
-position = Vector2( 542, 50 )
-next_tiles_path = [ NodePath("../Tile3") ]
-
-[node name="Tile9" parent="Tiles" instance=ExtResource( 14 )]
-position = Vector2( 726, 315 )
-next_tiles_path = [ NodePath("../Tile10") ]
-
-[node name="Tile2" parent="Tiles" instance=ExtResource( 15 )]
-position = Vector2( 376, -12 )
-next_tiles_path = [ NodePath("../Tile5") ]
-
-[node name="Tile12" parent="Tiles" instance=ExtResource( 15 )]
-position = Vector2( 525, 514 )
-next_tiles_path = [ NodePath("../Tile6") ]
-
-[node name="Tile8" parent="Tiles" instance=ExtResource( 15 )]
-position = Vector2( 79, 239 )
-next_tiles_path = [ NodePath("../Tile") ]
-
-[node name="Tile3" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 635, 142 )
-next_tiles_path = [ NodePath("../Tile9") ]
-
-[node name="Tile6" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 397, 362 )
-next_tiles_path = [ NodePath("../Tile4") ]
-
-[node name="Tile11" parent="Tiles" instance=ExtResource( 2 )]
-position = Vector2( 715, 660 )
-next_tiles_path = [ NodePath("../Tile12") ]
-
-[node name="Tile4" parent="Tiles" instance=ExtResource( 16 )]
-position = Vector2( 271, 460 )
-next_tiles_path = [ NodePath("../Tile7") ]
-
-[node name="Tile10" parent="Tiles" instance=ExtResource( 16 )]
-position = Vector2( 753, 508 )
-next_tiles_path = [ NodePath("../Tile11") ]
-
-[node name="Players" type="Node2D" parent="."]
-
-[node name="Player1" parent="Players" instance=ExtResource( 4 )]
-nick = "Vasco"
-
-[node name="Player2" parent="Players" instance=ExtResource( 4 )]
-nick = "Gama"
-
 [node name="UI" type="Control" parent="."]
 margin_right = 1024.0
 margin_bottom = 596.0
 
 [node name="Screen" type="CanvasLayer" parent="UI"]
+layer = 0
 
 [node name="Round" type="Label" parent="UI/Screen"]
 anchor_left = 1.0
@@ -139,6 +77,69 @@ margin_top = -253.0
 margin_right = 0.0
 margin_bottom = -83.0
 
+[node name="Tiles" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Start" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 67, 106 )
+next_tiles_path = [ NodePath("../Tile") ]
+
+[node name="Tile" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 214, 44 )
+next_tiles_path = [ NodePath("../Tile2") ]
+
+[node name="Tile7" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 140, 407 )
+next_tiles_path = [ NodePath("../Tile8") ]
+
+[node name="Tile5" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 542, 50 )
+next_tiles_path = [ NodePath("../Tile3"), NodePath("../Tile13"), NodePath("../Tile14") ]
+
+[node name="Tile9" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 726, 315 )
+next_tiles_path = [ NodePath("../Tile10") ]
+
+[node name="Tile2" parent="Tiles" instance=ExtResource( 15 )]
+position = Vector2( 376, -12 )
+next_tiles_path = [ NodePath("../Tile5") ]
+
+[node name="Tile12" parent="Tiles" instance=ExtResource( 15 )]
+position = Vector2( 525, 514 )
+next_tiles_path = [ NodePath("../Tile6") ]
+
+[node name="Tile8" parent="Tiles" instance=ExtResource( 15 )]
+position = Vector2( 79, 239 )
+next_tiles_path = [ NodePath("../Tile") ]
+
+[node name="Tile3" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 639, 151 )
+next_tiles_path = [ NodePath("../Tile9") ]
+
+[node name="Tile6" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 397, 362 )
+next_tiles_path = [ NodePath("../Tile4") ]
+
+[node name="Tile11" parent="Tiles" instance=ExtResource( 2 )]
+position = Vector2( 715, 660 )
+next_tiles_path = [ NodePath("../Tile12") ]
+
+[node name="Tile4" parent="Tiles" instance=ExtResource( 16 )]
+position = Vector2( 271, 460 )
+next_tiles_path = [ NodePath("../Tile7") ]
+
+[node name="Tile10" parent="Tiles" instance=ExtResource( 16 )]
+position = Vector2( 753, 508 )
+next_tiles_path = [ NodePath("../Tile11") ]
+
+[node name="Tile13" parent="Tiles" instance=ExtResource( 14 )]
+position = Vector2( 744, 59 )
+next_tiles_path = [ NodePath("../Tile9") ]
+
+[node name="Tile14" parent="Tiles" instance=ExtResource( 16 )]
+position = Vector2( 501, 182 )
+next_tiles_path = [ NodePath("../Tile9") ]
+
 [node name="CameraController" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
@@ -146,3 +147,11 @@ script = ExtResource( 3 )
 position = Vector2( 519, 233 )
 
 [node name="TransitionCamera" parent="CameraController" instance=ExtResource( 17 )]
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player1" parent="Players" instance=ExtResource( 4 )]
+nick = "Vasco"
+
+[node name="Player2" parent="Players" instance=ExtResource( 4 )]
+nick = "Gama"

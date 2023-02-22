@@ -24,10 +24,12 @@ func set_actual_tile(new_tile: Tile):
 	elif new_tile == null:
 		actual_tile = actual_tile
 	else:
-		yield(move_to_tile(new_tile), "completed")
 		actual_tile = new_tile
 		
-	
+
+func move():
+	var next_tile = yield(actual_tile.get_next_tile(), "completed") as Tile
+	yield(move_to_tile(next_tile), "completed")
 
 func move_to_tile(new_tile: Tile):
 	var new_position = new_tile.position
@@ -40,6 +42,7 @@ func move_to_tile(new_tile: Tile):
 		1, Tween.TRANS_SINE, Tween.EASE_IN)
 	animation.start()
 	yield(animation, "tween_completed")
+	set_actual_tile(new_tile)
 	emit_signal("walked")
 
 func play_turn(board):

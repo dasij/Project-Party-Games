@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TextureButton",
+"class": "Arrow",
+"language": "GDScript",
+"path": "res://maps/board/tile/arrow/Arrow.gd"
+}, {
 "base": "Node2D",
 "class": "Board",
 "language": "GDScript",
@@ -95,6 +100,7 @@ _global_script_classes=[ {
 "path": "res://Util.gd"
 } ]
 _global_script_class_icons={
+"Arrow": "",
 "Board": "",
 "BoardPlayer": "",
 "Card": "",

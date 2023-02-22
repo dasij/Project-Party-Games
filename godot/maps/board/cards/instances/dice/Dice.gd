@@ -19,10 +19,8 @@ func effect(board, player):
 	# TODO: move text to function
 	CardEvent.emit_signal("record", "%s rolled %s on the dice" % [player.nick, number_of_tiles])
 	for i in number_of_tiles:
-		if player.actual_tile.next_tiles.size() > 0:
-			var next_tile = player.actual_tile.next_tiles[0]
-			CardEvent.emit_signal("record", "%s is walking %s of %s" % [player.nick, i + 1, number_of_tiles])
-			yield(player.set_actual_tile(next_tile), "completed")
+		CardEvent.emit_signal("record", "%s is walking %s of %s" % [player.nick, i + 1, number_of_tiles])
+		yield(player.move(), "completed")
 	yield(player.actual_tile.play_effect(board, player), "completed")
 	
 	
