@@ -3,13 +3,14 @@ class_name BoardPlayer
 
 signal scored_points(points)
 signal scored_sub_points(sub_points)
-signal walked
 signal do_action
 
 onready var animation: Tween = $Tween
 onready var camera: Camera2D = $Camera2D
 
 export var nick: String = ""
+export var speed := 250
+
 var actual_tile: Tile = null setget set_actual_tile
 var deck  := Deck.new()
 var score := Score.new()
@@ -34,16 +35,19 @@ func move():
 func move_to_tile(new_tile: Tile):
 	var new_position = new_tile.position
 	var old_position = actual_tile.position
+	
+	var distance := new_tile.position.distance_to(actual_tile.position)
+	var duration := distance / self.speed
+	
 	animation.interpolate_property(
 		self, 
 		'position', 
 		old_position, 
 		new_position, 
-		1, Tween.TRANS_SINE, Tween.EASE_IN)
+		duration, Tween.TRANS_SINE, Tween.EASE_IN)
 	animation.start()
 	yield(animation, "tween_completed")
 	set_actual_tile(new_tile)
-	emit_signal("walked")
 
 func play_turn(board):
 	for card in deck.hand:
