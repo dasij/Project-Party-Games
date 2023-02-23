@@ -1,6 +1,3 @@
-# Rust-specific ignores
-/rust/target
-
 # Godot-specific ignores
 godot/.godot/
 godot/.import/
