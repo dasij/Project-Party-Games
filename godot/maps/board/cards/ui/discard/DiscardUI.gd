@@ -8,6 +8,7 @@ onready var DiscardLabel := $Label
 
 var deck = null setget set_deck
 
+
 func set_deck(new_deck):
 	Cards.reset()
 	if new_deck != null:
@@ -20,12 +21,15 @@ func set_deck(new_deck):
 		deck.disconnect("removed_from_deck", self, "_on_Deck_removed_from_deck")
 	deck = new_deck
 
+
 func _ready():
 	set_deck(deck)
 	Garbage.connect("discarded", self, "_on_Garbage_discarded")
 
+
 func _on_Garbage_discarded(card):
 	deck.remove_card(card)
+
 
 func _on_Deck_removed_from_deck(_card: Card, idx: int):
 	Util.delete_child(Cards, idx)

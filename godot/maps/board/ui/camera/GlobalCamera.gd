@@ -9,29 +9,33 @@ export var zoom_max := 1.15
 
 var velocity := Vector2.ZERO
 
+
 func activate() -> void:
 	self.set_process(true)
+
 
 func deactivate() -> void:
 	self.set_process(false)
 
+
 func get_camera():
-	return GlobalCamera 
+	return GlobalCamera
+
 
 func get_input() -> void:
 	var viewport_size := get_viewport().size / 2
-	
+
 	velocity = Vector2.ZERO
-	if Input.is_action_pressed('ui_right'):
+	if Input.is_action_pressed("ui_right"):
 		if position.x + viewport_size.x * GlobalCamera.zoom.x < GlobalCamera.limit_right:
 			velocity.x += 1
-	if Input.is_action_pressed('ui_left'):
+	if Input.is_action_pressed("ui_left"):
 		if position.x - viewport_size.x * GlobalCamera.zoom.x > GlobalCamera.limit_left:
 			velocity.x -= 1
-	if Input.is_action_pressed('ui_down'):
+	if Input.is_action_pressed("ui_down"):
 		if position.y + viewport_size.y * GlobalCamera.zoom.y < GlobalCamera.limit_bottom:
 			velocity.y += 1
-	if Input.is_action_pressed('ui_up'):
+	if Input.is_action_pressed("ui_up"):
 		if position.y - viewport_size.y * GlobalCamera.zoom.y > GlobalCamera.limit_top:
 			velocity.y -= 1
 	if Input.is_action_pressed("zoom_in"):
@@ -45,10 +49,12 @@ func get_input() -> void:
 		GlobalCamera.zoom = Vector2(new_zoom, new_zoom)
 		position = GlobalCamera.get_camera_screen_center()
 	velocity = velocity.normalized() * speed
-	
+
+
 func _process(delta):
 	get_input()
 	velocity = move_and_slide(velocity)
+
 
 func _ready():
 	GlobalCamera.align()

@@ -1,10 +1,8 @@
 extends Node
 class_name CardsCollection
 
-const cards = [
-	Dice,
-	SubPoint
-]
+const cards = [Dice, SubPoint]
+
 
 static func get_random_card():
 	var cards_size = cards.size()
