@@ -15,7 +15,6 @@ onready var Slot := $Slot
 func set_number(new_number):
 	number = new_number
 	if NumberLabel != null:
-		print(new_number)
 		NumberLabel.text = str(new_number + 1)
 	if Slot != null:
 		Slot.number = number
