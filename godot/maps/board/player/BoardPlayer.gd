@@ -1,8 +1,6 @@
 extends Node2D
 class_name BoardPlayer
 
-signal scored_points(points)
-signal scored_sub_points(sub_points)
 signal do_action
 
 onready var animation: Tween = $Tween
@@ -90,13 +88,3 @@ func animate_rotation():
 	)
 	animation.start()
 	yield(animation, "tween_completed")
-
-func _ready():
-	score.connect("scored_points", self, "_on_Score_scored_points")
-	score.connect("scored_sub_points", self, "_on_Score_scored_sub_points")
-
-func _on_Score_scored_points(points):
-	emit_signal("scored_points", points)
-
-func _on_Score_scored_sub_points(sub_points):
-	emit_signal("scored_sub_points", sub_points)

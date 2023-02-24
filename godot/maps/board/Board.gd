@@ -21,11 +21,10 @@ func setup_game(players):
 	
 	var i := 0
 	for player in players:
-		var score_player_ui = preload("res://maps/board/player/score/ScorePlayerUI.tscn").instance()
+		var score_player_ui = preload("res://maps/board/player/score/ScorePlayerUI.tscn").instance().init(player)
 		score_player_ui.set_anchors_preset(Control.PRESET_WIDE)
 		var placeholder = ScoreUI.get_child(i) as Control
 		placeholder.add_child(score_player_ui)
-		score_player_ui.player = player
 		i += 1
 #		score_player_ui.connect()
 	
