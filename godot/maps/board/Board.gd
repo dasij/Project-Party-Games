@@ -3,8 +3,6 @@ class_name Board
 
 export var max_round: int = 12
 
-onready var LabelRound = $UI/Screen/Round
-
 onready var Players := $Players.get_children()
 
 onready var Title = $UI/Screen/Title
@@ -93,12 +91,8 @@ func game_round(players):
 		BoardEvent.emit_signal("turn_ended")
 
 func _ready():
-	connect("round_started", self, "_on_Board_round_started")
-	
 	setup_game(Players)
+	
 	for round_i in max_round:
-		emit_signal("round_started", round_i, max_round)
+		BoardEvent.emit_signal("round_started", round_i, max_round)
 		yield(game_round(Players), "completed")
-
-func _on_Board_round_started(round_i, max_round):
-	LabelRound.text = "Round %s/%s" % [round_i + 1, max_round]
