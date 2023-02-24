@@ -12,8 +12,6 @@ onready var PlanningUI := $UI/Screen/Phases/Planning
 onready var PlayUI := $UI/Screen/Phases/Play
 onready var DiscardUI := $UI/Screen/Phases/DiscardUI
 
-signal round_started
-
 var state = {
 	"actual_player": null
 }

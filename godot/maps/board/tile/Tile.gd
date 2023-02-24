@@ -18,15 +18,18 @@ func get_next_tile():
 			return next_tiles[0]
 		else:
 			var choosed_tile = yield(choose_path(), "completed")
-			remove_arrows()
 			return choosed_tile
 
 func choose_path():
+	add_arrows()
+	var tile_choosed = yield(TileEvent, "path_choosed")
+	remove_arrows()
+	return tile_choosed as Tile
+
+func add_arrows():
 	for tile in self.next_tiles:
 		var Arrow = preload("res://maps/board/tile/arrow/Arrow.tscn").instance().init(self, tile)
 		self.add_child(Arrow)
-	var tile_choosed = yield(TileEvent, "path_choosed")
-	return tile_choosed as Tile
 
 func remove_arrows():
 	for child in get_children():
