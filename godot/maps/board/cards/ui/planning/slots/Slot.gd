@@ -3,13 +3,13 @@ extends Control
 class_name Slot
 
 signal removed_card(card)  # removed card
-signal added_card(card, idx)  # added index
-signal changed_order(idx_from, idx_to)
-signal changed_card(old_card, new_card, idx_hand)
+signal added_card(card, idx)  # added card on index idx
+signal changed_order(idx_from, idx_to) # changed order from idx_from to idx_to
+signal changed_card(old_card, new_card, idx) # changed card in idx
 
-onready var slot_empty: TextureRect = $Empty
-onready var slot_card: TextureRect = $Card
-onready var remove_button: Button = $Card/Remove
+onready var SlotEmpty: TextureRect = $Empty
+onready var SlotCard: TextureRect = $Card
+onready var RemoveButton: Button = $Card/Remove
 
 var card = null setget set_card
 var number := 1
@@ -17,13 +17,13 @@ var number := 1
 
 func set_card(new_card):
 	if new_card == null:
-		slot_empty.show()
-		slot_card.hide()
-		slot_card.card = null
+		SlotEmpty.show()
+		SlotCard.hide()
+		SlotCard.card = null
 	else:
-		slot_card.show()
-		slot_empty.hide()
-		slot_card.card = new_card
+		SlotCard.show()
+		SlotEmpty.hide()
+		SlotCard.card = new_card
 	card = new_card
 
 
@@ -32,7 +32,7 @@ func get_drag_data(_position):
 	data["card"] = card
 	data["from"] = self
 
-	var control := DraggableCard.create_dragged_card(slot_card.texture)
+	var control := DraggableCard.create_dragged_card(SlotCard.texture)
 	set_drag_preview(control)
 
 	return data
@@ -59,7 +59,7 @@ func reset():
 
 
 func _ready():
-	remove_button.connect("pressed", self, "_on_Remove_pressed")
+	RemoveButton.connect("pressed", self, "_on_Remove_pressed")
 
 
 func _on_Remove_pressed():

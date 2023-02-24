@@ -49,7 +49,6 @@ margin_top = 8.0
 margin_right = 76.0
 margin_bottom = 132.0
 size_flags_vertical = 4
-number = 1
 
 [node name="CardSlotUI2" parent="Turn/Control/Slots" instance=ExtResource( 1 )]
 anchor_top = 0.0
@@ -60,7 +59,7 @@ margin_top = 8.0
 margin_right = 172.0
 margin_bottom = 132.0
 size_flags_vertical = 4
-number = 2
+number = 1
 
 [node name="CardSlotUI3" parent="Turn/Control/Slots" instance=ExtResource( 1 )]
 anchor_top = 0.0
@@ -71,7 +70,7 @@ margin_top = 8.0
 margin_right = 268.0
 margin_bottom = 132.0
 size_flags_vertical = 4
-number = 3
+number = 2
 
 [node name="CardSlotUI4" parent="Turn/Control/Slots" instance=ExtResource( 1 )]
 anchor_top = 0.0
@@ -82,7 +81,7 @@ margin_top = 8.0
 margin_right = 364.0
 margin_bottom = 132.0
 size_flags_vertical = 4
-number = 4
+number = 3
 
 [node name="CardSlotUI5" parent="Turn/Control/Slots" instance=ExtResource( 1 )]
 anchor_top = 0.0
@@ -93,7 +92,7 @@ margin_top = 8.0
 margin_right = 460.0
 margin_bottom = 132.0
 size_flags_vertical = 4
-number = 5
+number = 4
 
 [node name="PlayButton" type="Button" parent="Turn/Control"]
 margin_left = 507.0

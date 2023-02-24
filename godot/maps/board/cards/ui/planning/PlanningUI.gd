@@ -2,9 +2,9 @@ extends Control
 
 signal pressed_play
 
-onready var slots := $Turn/Control/Slots
-onready var cards := $Cards
-onready var play_button := $Turn/Control/PlayButton
+onready var Slots := $Turn/Control/Slots
+onready var Cards := $Cards
+onready var PlayButton := $Turn/Control/PlayButton
 
 var deck = null setget set_deck
 
@@ -16,19 +16,19 @@ func set_deck(new_deck):
 		new_deck.connect("removed_from_deck", self, "_on_Deck_removed_from_deck")
 		new_deck.connect("added_to_hand", self, "_on_Deck_added_to_hand")
 		new_deck.connect("removed_from_hand", self, "_on_Deck_removed_from_hand")
-		if cards != null:
-			cards.add_cards_to_ui(new_deck.deck)
+		if Cards != null:
+			Cards.add_cards_to_ui(new_deck.deck)
 	deck = new_deck
 
 
 # this functions tells how the UI is reseted
 func reset():
 	# remove all cards from deck
-	if cards != null:
-		cards.reset()
+	if Cards != null:
+		Cards.reset()
 
 	# reset all hand slots
-	for slot in slots.get_children():
+	for slot in Slots.get_children():
 		slot.reset()
 
 	# if there is a deck remove all its connections and put him as null
@@ -43,12 +43,8 @@ func reset():
 
 
 func _ready():
-	_ready_connects()
-
-
-func _ready_connects():
-	play_button.connect("pressed", self, "_on_Play_pressed")
-	for slot in slots.get_children():
+	PlayButton.connect("pressed", self, "_on_Play_pressed")
+	for slot in Slots.get_children():
 		slot.connect("removed_card", self, "_on_Slot_removed_card")
 		slot.connect("added_card", self, "_on_Slot_added_card")
 		slot.connect("changed_order", self, "_on_Slot_changed_order")
@@ -77,19 +73,17 @@ func _on_Play_pressed():
 
 
 func _on_Deck_added_to_deck(card: Card, _idx: int):
-	cards.add_card_to_ui(card)
+	Cards.add_card_to_ui(card)
 
 
 func _on_Deck_removed_from_deck(_card: Card, idx: int):
-	Util.delete_child(cards, idx)
+	Util.delete_child(Cards, idx)
 
 
 func _on_Deck_added_to_hand(_card: Card, _idx: int):
-	play_button.set_disabled(false)
-	pass
+	PlayButton.set_disabled(false)
 
 
 func _on_Deck_removed_from_hand(_card: Card, _idx: int):
 	if deck.hand.size() == 0:
-		play_button.set_disabled(true)
-	pass
+		PlayButton.set_disabled(true)
