@@ -44,5 +44,4 @@ func transition_to(active_node: Node2D, next_node: Node2D) -> void:
 
 
 func set_position(new_pos: Vector2) -> void:
-	print_debug(new_pos)
 	self.position = new_pos

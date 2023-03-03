@@ -8,4 +8,8 @@
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.28125, 0.28125 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}

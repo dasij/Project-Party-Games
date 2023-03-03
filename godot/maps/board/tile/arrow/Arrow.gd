@@ -1,24 +1,18 @@
+tool
 extends TextureButton
 class_name Arrow
 
-var from_tile = null
-var to_tile = null
+export var to_tile_idx = 0
 
 
-# warning-ignore:shadowed_variable
-func init(from_tile, to_tile):
-	self.connect("pressed", self, "_on_Arrow_pressed")
-	self.from_tile = from_tile
-	self.to_tile = to_tile
-
-	var direction = from_tile.position.direction_to(to_tile.position)
-	var angle = from_tile.position.angle_to_point(to_tile.position)
-
-	self.rect_rotation += rad2deg(angle + PI)
-	self.rect_position += direction * from_tile.arrow_circle_radius
-
+func init(to_tile_idx):
+	self.to_tile_idx = to_tile_idx
 	return self
 
 
+func _ready():
+	self.connect("pressed", self, "_on_Arrow_pressed")
+
+
 func _on_Arrow_pressed():
-	TileEvent.emit_signal("path_choosed", to_tile)
+	TileEvent.emit_signal("path_choosed", to_tile_idx)

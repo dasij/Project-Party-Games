@@ -4,7 +4,7 @@ onready var GlobalCamera := $Camera as Camera2D
 
 export var speed := 500
 export var zoom_speed := 0.01
-export var zoom_min := 0.75
+export var zoom_min := 0.25
 export var zoom_max := 1.15
 
 var velocity := Vector2.ZERO

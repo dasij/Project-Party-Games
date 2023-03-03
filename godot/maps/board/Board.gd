@@ -11,12 +11,13 @@ onready var ScoreUI := $UI/Screen/ScoreUI
 onready var PlanningUI := $UI/Screen/Phases/Planning
 onready var PlayUI := $UI/Screen/Phases/Play
 onready var DiscardUI := $UI/Screen/Phases/DiscardUI
+onready var Graph := $Graph
 
 var state = {"actual_player": null}
 
 
 func setup_game(players):
-	var start_tile = $Tiles/Start as Tile
+	var start_tile = $Graph/Tiles/Start as Tile
 
 	var i := 0
 	for player in players:
@@ -30,6 +31,12 @@ func setup_game(players):
 	for player in players:
 		player = player as BoardPlayer
 		player.actual_tile = start_tile
+		player.graph = Graph
+		player.connect("path", self, "update_path")
+
+
+func update_path(path):
+	$Line2D.points = path
 
 
 func transition_to_pre_turn(player: BoardPlayer) -> void:
@@ -39,6 +46,8 @@ func transition_to_pre_turn(player: BoardPlayer) -> void:
 
 
 func pre_turn(player: BoardPlayer):
+	give_player_random_card(player)
+	give_player_random_card(player)
 	give_player_random_card(player)
 	yield(planning_phase(player), "completed")
 	pass

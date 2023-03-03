@@ -4,8 +4,8 @@ class_name Slot
 
 signal removed_card(card)  # removed card
 signal added_card(card, idx)  # added card on index idx
-signal changed_order(idx_from, idx_to) # changed order from idx_from to idx_to
-signal changed_card(old_card, new_card, idx) # changed card in idx
+signal changed_order(idx_from, idx_to)  # changed order from idx_from to idx_to
+signal changed_card(old_card, new_card, idx)  # changed card in idx
 
 onready var SlotEmpty: TextureRect = $Empty
 onready var SlotCard: TextureRect = $Card

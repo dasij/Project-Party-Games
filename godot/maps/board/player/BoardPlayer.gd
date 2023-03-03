@@ -2,16 +2,22 @@ extends Node2D
 class_name BoardPlayer
 
 signal do_action
+signal path(path)
 
 onready var animation: Tween = $Tween
 onready var camera: Camera2D = $Camera2D
 
 export var nick: String = ""
-export var speed := 250
+export var speed := 200
 
 var actual_tile: Tile = null setget set_actual_tile
 var deck := Deck.new()
 var score := Score.new()
+# TODO:
+# find a way to organize this if necessary
+# I don't know if it is a good ideia to the player have the graph
+# reference inside it. Maybe we should do this with an autoload event?
+var graph = null
 
 
 func get_camera() -> Camera2D:
@@ -37,14 +43,23 @@ func move_to_tile(new_tile: Tile):
 	var new_position = new_tile.position
 	var old_position = actual_tile.position
 
-	var distance := new_tile.position.distance_to(actual_tile.position)
-	var duration := distance / self.speed
+#	var distance := new_tile.position.distance_to(actual_tile.position)
+#	var duration := distance / self.speed
 
-	animation.interpolate_property(
-		self, "position", old_position, new_position, duration, Tween.TRANS_SINE, Tween.EASE_IN
-	)
-	animation.start()
-	yield(animation, "tween_completed")
+	var path = self.graph.get_path_node(actual_tile, new_tile) as Path2D
+	var curve = path.curve.tessellate()
+
+	emit_signal("path", curve)
+
+	for point in curve:
+		var distance := self.position.distance_to(point)
+		var duration := distance / self.speed
+		animation.interpolate_property(
+			self, "position", self.position, point, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+		)
+		animation.start()
+		yield(animation, "tween_completed")
+	yield(get_tree(), "idle_frame")
 	set_actual_tile(new_tile)
 
 
