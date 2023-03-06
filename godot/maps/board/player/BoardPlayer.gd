@@ -2,7 +2,6 @@ extends Node2D
 class_name BoardPlayer
 
 signal do_action
-signal path(path)
 
 onready var animation: Tween = $Tween
 onready var camera: Camera2D = $Camera2D
@@ -48,8 +47,6 @@ func move_to_tile(new_tile: Tile):
 
 	var path = self.graph.get_path_node(actual_tile, new_tile) as Path2D
 	var curve = path.curve.tessellate()
-
-	emit_signal("path", curve)
 
 	for point in curve:
 		var distance := self.position.distance_to(point)

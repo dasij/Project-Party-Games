@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://maps/board/Board.gd" type="Script" id=1]
 [ext_resource path="res://maps/board/tile/instances/pink/PinkTile.tscn" type="PackedScene" id=2]
@@ -24,7 +24,6 @@
 [ext_resource path="res://maps/board/graph/Graph.gd" type="Script" id=22]
 [ext_resource path="res://maps/board/graph/Paths.gd" type="Script" id=23]
 [ext_resource path="res://maps/board/tile/path/Path.tscn" type="PackedScene" id=25]
-[ext_resource path="res://maps/board/tile/arrow/Arrow.gd" type="Script" id=28]
 [ext_resource path="res://maps/board/tile/arrow/Arrow.tscn" type="PackedScene" id=29]
 
 [sub_resource type="TileSet" id=18]
@@ -312,7 +311,6 @@ margin_top = -69.0
 margin_right = 179.0
 margin_bottom = -46.0
 rect_rotation = 27.693
-script = ExtResource( 28 )
 to_tile_idx = 2
 
 [node name="Tile9" parent="Graph/Tiles" instance=ExtResource( 14 )]
@@ -374,9 +372,5 @@ script = ExtResource( 3 )
 position = Vector2( 519, 233 )
 
 [node name="TransitionCamera" parent="CameraController" instance=ExtResource( 17 )]
-
-[node name="Line2D" type="Line2D" parent="."]
-visible = false
-width = 2.0
 
 [editable path="Graph/Tiles/Tile5"]

@@ -32,11 +32,6 @@ func setup_game(players):
 		player = player as BoardPlayer
 		player.actual_tile = start_tile
 		player.graph = Graph
-		player.connect("path", self, "update_path")
-
-
-func update_path(path):
-	$Line2D.points = path
 
 
 func transition_to_pre_turn(player: BoardPlayer) -> void:
