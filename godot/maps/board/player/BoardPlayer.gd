@@ -12,11 +12,23 @@ export var speed := 200
 var actual_tile: Tile = null setget set_actual_tile
 var deck := Deck.new()
 var score := Score.new()
+var max_hp := 30
+var hp := max_hp setget set_hp
 # TODO:
 # find a way to organize this if necessary
 # I don't know if it is a good ideia to the player have the graph
 # reference inside it. Maybe we should do this with an autoload event?
 var graph = null
+
+
+func set_hp(new_hp):
+	if new_hp <= 0:
+		hp = 0
+		# TODO: go to nearest graveyard
+	elif new_hp >= max_hp:
+		new_hp = max_hp
+	else:
+		new_hp = hp
 
 
 func get_camera() -> Camera2D:
