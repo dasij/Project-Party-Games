@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://maps/board/player/BoardPlayer.gd" type="Script" id=1]
-[ext_resource path="res://char.png" type="Texture" id=2]
+[ext_resource path="res://assets/chars/char.png" type="Texture" id=2]
 [ext_resource path="res://maps/board/camera/BaseCamera.tscn" type="PackedScene" id=3]
 
 [node name="BoardPlayer" type="Node2D"]
