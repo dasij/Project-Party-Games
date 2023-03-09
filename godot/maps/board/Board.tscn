@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://maps/board/Board.gd" type="Script" id=1]
 [ext_resource path="res://maps/board/tile/instances/pink/PinkTile.tscn" type="PackedScene" id=2]
@@ -20,7 +20,6 @@
 [ext_resource path="res://maps/board/Phases.gd" type="Script" id=18]
 [ext_resource path="res://maps/board/ui/round/Round.tscn" type="PackedScene" id=19]
 [ext_resource path="res://maps/board/tilemap/TileMap.tscn" type="PackedScene" id=20]
-[ext_resource path="res://maps/board/tile/path/Path.gd" type="Script" id=21]
 [ext_resource path="res://maps/board/graph/Graph.gd" type="Script" id=22]
 [ext_resource path="res://maps/board/graph/Paths.gd" type="Script" id=23]
 [ext_resource path="res://maps/board/tile/path/Path.tscn" type="PackedScene" id=25]
@@ -234,9 +233,8 @@ curve = SubResource( 19 )
 [node name="Tile15-Tile12" parent="Graph/Paths" instance=ExtResource( 25 )]
 curve = SubResource( 20 )
 
-[node name="Tile16-Tile9" type="Path2D" parent="Graph/Paths" instance=ExtResource( 25 )]
+[node name="Tile16-Tile9" parent="Graph/Paths" instance=ExtResource( 25 )]
 curve = SubResource( 21 )
-script = ExtResource( 21 )
 
 [node name="Tiles" type="Node2D" parent="Graph"]
 script = ExtResource( 5 )
