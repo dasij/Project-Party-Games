@@ -1,7 +1,7 @@
 extends Node
 class_name CardsCollection
 
-const cards = [Dice, SubPoint]
+const cards = [Dice, SubPoint, Suicide]
 
 
 static func get_random_card():

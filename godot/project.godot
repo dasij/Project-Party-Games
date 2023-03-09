@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://maps/board/cards/instances/normal/SubPoint.gd"
 }, {
+"base": "Card",
+"class": "Suicide",
+"language": "GDScript",
+"path": "res://maps/board/cards/instances/normal/Suicide.gd"
+}, {
 "base": "Node2D",
 "class": "Tile",
 "language": "GDScript",
@@ -116,6 +121,7 @@ _global_script_class_icons={
 "Score": "",
 "Slot": "",
 "SubPoint": "",
+"Suicide": "",
 "Tile": "",
 "Util": ""
 }

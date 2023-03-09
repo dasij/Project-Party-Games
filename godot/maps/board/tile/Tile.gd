@@ -2,12 +2,15 @@ tool
 extends Node2D
 class_name Tile
 
+enum TILE_TYPE { NORMAL, GRAVEYARD }
+
 export(Array, NodePath) var next_tiles_path = [] setget set_next_tiles_path
 export var arrow_circle_radius := 40.0
 
 var next_tiles: Array = []
 var prev_tiles: Array = []
 var tiles_ready: bool = false
+var tile_type = TILE_TYPE.NORMAL
 
 onready var Arrows = $Arrows
 
@@ -97,18 +100,14 @@ func update_arrows(tiles):
 			arrow.queue_free()
 
 
-#func add_arrow(tile):
-#	if get_arrow_for(tile) == null:
-#		var Arrow = preload("res://maps/board/tile/arrow/Arrow.tscn").instance().init(self, tile)
-#		Arrow.name = str(tile)
-#		Arrows.add_child(Arrow)
-#
-#
-#func remove_arrow(tile):
-#	var arrow = get_arrow_for(tile)
-#	if arrow != null:
-#		Arrows.remove_child(arrow)
-#		arrow.queue_free()
+func pre_turn_effect(board, player):
+	# TODO: remove this
+	yield(get_tree(), "idle_frame")
+	pass
+
+
+func play_pre_turn_effect(board, player):
+	yield(pre_turn_effect(board, player), "completed")
 
 
 func effect(board, player):
@@ -131,3 +130,7 @@ func _ready():
 
 func _on_Tile_tiles_ready():
 	self.tiles_ready = true
+
+
+static func is_graveyard(tile):
+	return tile.tile_type == TILE_TYPE.GRAVEYARD
