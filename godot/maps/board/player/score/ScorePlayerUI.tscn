@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://maps/board/player/score/ScorePlayerUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/score_ui/gelatin.png" type="Texture" id=2]
 [ext_resource path="res://assets/score_ui/monster.png" type="Texture" id=3]
 [ext_resource path="res://assets/score_ui/background.png" type="Texture" id=4]
-[ext_resource path="res://assets/score_ui/health_bar.png" type="Texture" id=5]
+[ext_resource path="res://maps/board/player/score/health_bar/HealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/score_ui/coins.png" type="Texture" id=6]
 [ext_resource path="res://resources/ui_themes/fonts/ScoreFont.tres" type="Theme" id=7]
+[ext_resource path="res://assets/score_ui/heart.png" type="Texture" id=9]
 
 [node name="ScorePlayerUI" type="Control"]
 anchor_right = 0.410156
@@ -52,13 +53,25 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Health" type="TextureRect" parent="Back"]
-anchor_left = -0.0701737
-anchor_top = 0.785047
-anchor_right = 0.825648
-anchor_bottom = 1.06357
-texture = ExtResource( 5 )
+[node name="HealthBar" parent="Back" instance=ExtResource( 5 )]
+anchor_left = 0.0589593
+anchor_top = 0.843318
+anchor_right = 0.707413
+anchor_bottom = 1.03735
+margin_right = 0.0
+margin_bottom = 0.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Heart" type="TextureRect" parent="Back"]
+anchor_left = -0.0286696
+anchor_top = 0.817199
+anchor_right = 0.151596
+anchor_bottom = 1.05227
+texture = ExtResource( 9 )
 expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": true
 }

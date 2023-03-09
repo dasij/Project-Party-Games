@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon_red.png-2c850d5491cc19ea5e8267a18964546b.stex"
+path="res://.import/heart.png-01cb193a5c79def8a6abe922d5439a47.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon_red.png"
-dest_files=[ "res://.import/icon_red.png-2c850d5491cc19ea5e8267a18964546b.stex" ]
+source_file="res://assets/score_ui/heart.png"
+dest_files=[ "res://.import/heart.png-01cb193a5c79def8a6abe922d5439a47.stex" ]
 
 [params]
 

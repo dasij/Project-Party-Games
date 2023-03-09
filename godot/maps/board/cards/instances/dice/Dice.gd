@@ -1,8 +1,6 @@
 extends Card
 class_name Dice
 
-signal playing_dice
-
 var max_tiles := 6
 var min_tiles := 1
 
@@ -17,7 +15,6 @@ func roll_dice() -> int:
 
 
 func effect(board, player):
-	emit_signal("playing_dice")
 	var number_of_tiles = roll_dice()
 	# TODO: move text to function
 	CardEvent.emit_signal("record", "%s rolled %s on the dice" % [player.nick, number_of_tiles])

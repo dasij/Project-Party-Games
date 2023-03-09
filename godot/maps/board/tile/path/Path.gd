@@ -25,5 +25,9 @@ func _process(_delta):
 		if to_tile != null:
 			var count = self.curve.get_point_count()
 			self.curve.set_point_position(count - 1, to_tile.position)
-	else:
+
+
+func _ready():
+	if not Engine.editor_hint:
+		set_process(false)
 		self.hide()

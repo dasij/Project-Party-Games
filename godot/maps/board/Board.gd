@@ -44,6 +44,7 @@ func pre_turn(player: BoardPlayer):
 	give_player_random_card(player)
 	give_player_random_card(player)
 	give_player_random_card(player)
+	yield(player.play_pre_turn(self), "completed")
 	yield(planning_phase(player), "completed")
 	pass
 
