@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://maps/board/player/BoardPlayer.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://lyyehvaxeugn" path="res://assets/chars/char.png" id="2"]
-[ext_resource type="PackedScene" path="res://maps/board/camera/BaseCamera.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://d3hqn4uki8swo" path="res://maps/board/camera/BaseCamera.tscn" id="3"]
 
 [node name="BoardPlayer" type="Node2D"]
 script = ExtResource("1")

@@ -41,7 +41,6 @@ _data = {
 }
 
 [node name="Title" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,12 +56,14 @@ libraries = {
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -512.0
-offset_top = -57.0
-offset_right = 512.0
-offset_bottom = 57.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
+anchor_left = 0.0555556
+anchor_top = 0.412037
+anchor_right = 0.944444
+anchor_bottom = 0.587963
+offset_right = 3.05176e-05
+offset_bottom = -1.43051e-05
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

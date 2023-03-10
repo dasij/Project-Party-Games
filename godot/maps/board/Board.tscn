@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" path="res://maps/board/tile/instances/graveyard/Graveyard.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://maps/board/player/score/ScoreUI.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://b2brro8euj2k4" path="res://maps/board/cards/ui/planning/PlanningUI.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://maps/board/cards/ui/play/PlayUI.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://cfsjrcf6k6v26" path="res://maps/board/cards/ui/play/PlayUI.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://btbehnxqsibnx" path="res://maps/board/cards/ui/discard/DiscardUI.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ca7bqqv4lemw" path="res://maps/board/ui/title/Title.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://dbeaacv6pv0dp" path="res://maps/board/ui/camera/GlobalCamera.tscn" id="12"]
@@ -164,29 +164,23 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = 1.0
-offset_right = -8.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("18")
 
 [node name="Planning" parent="UI/Screen/Phases" instance=ExtResource("8")]
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
+layout_mode = 1
 
 [node name="Play" parent="UI/Screen/Phases" instance=ExtResource("9")]
 visible = false
-anchors_preset = 0
+layout_mode = 1
 
 [node name="DiscardUI" parent="UI/Screen/Phases" instance=ExtResource("10")]
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
+layout_mode = 1
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Title" parent="UI/Screen" instance=ExtResource("11")]
 

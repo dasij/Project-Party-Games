@@ -103,7 +103,9 @@ func restore():
 
 
 func _input(event):
-	if event.is_action_pressed("ui_accept") and not event.is_echo():
+	print_debug(event)
+	if event.is_action_pressed("confirm"):
+		print_debug("emitting do_action")
 		emit_signal("do_action")
 
 

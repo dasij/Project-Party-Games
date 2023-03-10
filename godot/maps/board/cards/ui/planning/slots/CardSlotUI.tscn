@@ -1,54 +1,63 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://b53q14vcejmfx"]
 
-[ext_resource path="res://assets/cards/card_slot.jpeg" type="Texture2D" id=1]
-[ext_resource path="res://maps/board/cards/ui/planning/slots/CardSlotUI.gd" type="Script" id=2]
-[ext_resource path="res://maps/board/cards/ui/CardUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/ui_themes/cards/Slot.tres" type="Theme" id=4]
-[ext_resource path="res://maps/board/cards/ui/planning/slots/Slot.gd" type="Script" id=5]
+[ext_resource type="Texture2D" uid="uid://7bajjmxew1xx" path="res://assets/cards/card_slot.jpeg" id="1"]
+[ext_resource type="Script" path="res://maps/board/cards/ui/planning/slots/CardSlotUI.gd" id="2"]
+[ext_resource type="PackedScene" path="res://maps/board/cards/ui/CardUI.tscn" id="3"]
+[ext_resource type="Theme" uid="uid://c5dl2hcg7riq2" path="res://resources/ui_themes/cards/Slot.tres" id="4"]
+[ext_resource type="Script" path="res://maps/board/cards/ui/planning/slots/Slot.gd" id="5"]
 
 [node name="CardSlotUI" type="Control"]
+custom_minimum_size = Vector2(76, 124)
+layout_mode = 3
 anchor_top = 0.025
 anchor_right = 0.0742188
 anchor_bottom = 0.206667
 offset_top = -15.0
 offset_right = -5.34058e-05
 offset_bottom = -0.000198364
-custom_minimum_size = Vector2( 76, 124 )
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 16.0
+grow_horizontal = 2
 
 [node name="Number" type="Label" parent="HBoxContainer"]
-offset_right = 76.0
-offset_bottom = 16.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
-text = "0"
-align = 1
-valign = 1
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Slot" type="Control" parent="."]
+anchors_preset = 0
 anchor_top = 0.129032
 anchor_right = 0.986842
 anchor_bottom = 0.991935
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [node name="Empty" type="TextureRect" parent="Slot"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
-expand = true
+texture = ExtResource("1")
+expand_mode = 1
 stretch_mode = 6
 
-[node name="Card" parent="Slot" instance=ExtResource( 3 )]
+[node name="Card" parent="Slot" instance=ExtResource("3")]
 visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 4 )
+theme = ExtResource("4")
+expand_mode = 1
 
 [node name="Remove" type="Button" parent="Slot/Card"]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -19.0001
