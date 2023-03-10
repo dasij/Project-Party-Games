@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 signal removed_card(card, idx)
@@ -6,10 +6,10 @@ signal added_card(card, idx)
 signal changed_order(from_idx, to_idx)
 signal changed_card(old_card, new_card, idx_hand)
 
-export var number := 0 setget set_number
+@export var number := 0 : set = set_number
 
-onready var NumberLabel := $HBoxContainer/Number
-onready var Slot := $Slot
+@onready var NumberLabel := $HBoxContainer/Number
+@onready var Slot := $Slot
 
 
 func set_number(new_number):
@@ -26,10 +26,10 @@ func reset():
 
 func _ready():
 	set_number(number)
-	Slot.connect("removed_card", self, "_on_Slot_removed_card")
-	Slot.connect("added_card", self, "_on_Slot_added_card")
-	Slot.connect("changed_order", self, "_on_Slot_changed_order")
-	Slot.connect("changed_card", self, "_on_Slot_changed_card")
+	Slot.connect("removed_card",Callable(self,"_on_Slot_removed_card"))
+	Slot.connect("added_card",Callable(self,"_on_Slot_added_card"))
+	Slot.connect("changed_order",Callable(self,"_on_Slot_changed_order"))
+	Slot.connect("changed_card",Callable(self,"_on_Slot_changed_card"))
 
 
 func _on_Slot_removed_card(card):

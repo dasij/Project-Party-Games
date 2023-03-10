@@ -1,18 +1,18 @@
-tool
+@tool
 extends Node2D
 class_name Tile
 
 enum TILE_TYPE { NORMAL, GRAVEYARD }
 
-export(Array, NodePath) var next_tiles_path = [] setget set_next_tiles_path
-export var arrow_circle_radius := 40.0
+@export var next_tiles_path = [] : set = set_next_tiles_path # (Array, NodePath)
+@export var arrow_circle_radius := 40.0
 
 var next_tiles: Array = []
 var prev_tiles: Array = []
 var tiles_ready: bool = false
 var tile_type = TILE_TYPE.NORMAL
 
-onready var Arrows = $Arrows
+@onready var Arrows = $Arrows
 
 
 func set_next_tiles_path(array):
@@ -27,10 +27,7 @@ func set_next_tiles_path(array):
 	var result := []
 	for node in array:
 		if node != null:
-			if node != "":
-				node = get_node_or_null(node)
-			else:
-				node = null
+			node = get_node_or_null(node)
 		if node != null:
 			result.append(node)
 			node = node as Tile
@@ -53,16 +50,15 @@ func get_next_tile():
 	var next_size := self.next_tiles.size()
 	if next_size > 0:
 		if next_size == 1:
-			yield(get_tree(), "idle_frame")
 			return next_tiles[0]
 		else:
-			var choosed_tile = yield(choose_path(), "completed")
+			var choosed_tile = await choose_path()
 			return choosed_tile
 
 
 func choose_path():
 	Arrows.show()
-	var tile_idx_choosed = yield(TileEvent, "path_choosed")
+	var tile_idx_choosed = await TileEvent.path_choosed
 	Arrows.hide()
 	return self.next_tiles[tile_idx_choosed] as Tile
 
@@ -89,7 +85,7 @@ func update_arrows(tiles):
 		for i in range(tiles.size()):
 			var tile = tiles[i]
 			if get_arrow_for(tile) == null:
-				var arrow = preload("res://maps/board/tile/arrow/Arrow.tscn").instance()
+				var arrow = preload("res://maps/board/tile/arrow/Arrow.tscn").instantiate()
 				arrow.init(i)
 				arrow.name = str(tile)
 				Arrows.add_child(arrow)
@@ -101,13 +97,11 @@ func update_arrows(tiles):
 
 
 func pre_turn_effect(board, player):
-	# TODO: remove this
-	yield(get_tree(), "idle_frame")
 	pass
 
 
 func play_pre_turn_effect(board, player):
-	yield(pre_turn_effect(board, player), "completed")
+	await pre_turn_effect(board, player)
 
 
 func effect(board, player):
@@ -115,7 +109,7 @@ func effect(board, player):
 
 
 func play_effect(board, player):
-	yield(effect(board, player), "completed")
+	await effect(board, player)
 
 
 func _to_string():
@@ -123,9 +117,9 @@ func _to_string():
 
 
 func _ready():
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 		Arrows.hide()
-	TileEvent.connect("tiles_ready", self, "_on_Tile_tiles_ready")
+	TileEvent.connect("tiles_ready",Callable(self,"_on_Tile_tiles_ready"))
 
 
 func _on_Tile_tiles_ready():

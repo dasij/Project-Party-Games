@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var GlobalCamera := $GlobalCamera
-onready var TransitionCamera := $TransitionCamera
+@onready var GlobalCamera := $GlobalCamera
+@onready var TransitionCamera := $TransitionCamera
 
 # possible states for the camera
 enum CAMERA { GLOBAL, PLAYER }
@@ -10,7 +10,7 @@ enum CAMERA { GLOBAL, PLAYER }
 var camera_state = CAMERA.PLAYER
 
 # tracks the camera that is showed on the screen
-var active_node = null setget set_active_node
+var active_node = null : set = set_active_node
 
 # the player of the turn must be saved here,
 # so we can back to him, after any camera change
@@ -23,12 +23,12 @@ var transitioning := false
 
 func set_active_node(new_node):
 	if active_node == null:
-		new_node.get_camera().make_current()
+		new_node.get_camera_3d().make_current()
 	elif new_node == null:
-		active_node.get_camera().current = false
+		active_node.get_camera_3d().current = false
 	else:
 		transitioning = true
-		yield(TransitionCamera.transition_to(active_node, new_node), "completed")
+		await TransitionCamera.transition_to(active_node, new_node)
 		transitioning = false
 	active_node = new_node
 
@@ -40,20 +40,20 @@ func _input(event):
 			# it to the player
 			CAMERA.GLOBAL:
 				GlobalCamera.deactivate()
-				yield(set_active_node(turn_player), "completed")
+				await set_active_node(turn_player)
 				camera_state = CAMERA.PLAYER
 				CameraEvent.emit_signal("changed_to_player")
 			# if camera is in player state change
 			# it to the global
 			CAMERA.PLAYER:
 				GlobalCamera.activate()
-				yield(set_active_node(GlobalCamera), "completed")
+				await set_active_node(GlobalCamera)
 				camera_state = CAMERA.GLOBAL
 				CameraEvent.emit_signal("changed_to_global")
 
 
 func _ready():
-	BoardEvent.connect("turn_started", self, "_on_BoardEvent_turn_started")
+	BoardEvent.connect("turn_started",Callable(self,"_on_BoardEvent_turn_started"))
 
 
 func _on_BoardEvent_turn_started(player: BoardPlayer):

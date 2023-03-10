@@ -22,5 +22,5 @@ func effect(board, player):
 		CardEvent.emit_signal(
 			"record", "%s is walking %s of %s" % [player.nick, i + 1, number_of_tiles]
 		)
-		yield(player.move(), "completed")
-	yield(player.actual_tile.play_effect(board, player), "completed")
+		await player.move()
+	await player.actual_tile.play_effect(board, player)

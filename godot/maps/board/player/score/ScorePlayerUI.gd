@@ -1,10 +1,10 @@
 extends Control
 
-onready var points_label = $Back/Points
-onready var sub_points_label = $Back/SubPoints
-onready var health_bar := $Back/HealthBar
+@onready var points_label = $Back/Points
+@onready var sub_points_label = $Back/SubPoints
+@onready var health_bar := $Back/HealthBar
 
-var player = null setget set_player
+var player = null : set = set_player
 
 
 func init(player):
@@ -14,13 +14,13 @@ func init(player):
 
 func set_player(new_player):
 	if player != null:
-		player.score.disconnect("scored_points", self, "_on_Player_scored_point")
-		player.score.disconnect("scored_sub_points", self, "_on_Player_scored_sub_point")
-		player.disconnect("changed_hp", self, "_on_Player_changed_hp")
+		player.score.disconnect("scored_points",Callable(self,"_on_Player_scored_point"))
+		player.score.disconnect("scored_sub_points",Callable(self,"_on_Player_scored_sub_point"))
+		player.disconnect("changed_hp",Callable(self,"_on_Player_changed_hp"))
 	if new_player != null:
-		new_player.score.connect("scored_points", self, "_on_Player_scored_point")
-		new_player.score.connect("scored_sub_points", self, "_on_Player_scored_sub_point")
-		new_player.connect("changed_hp", self, "_on_Player_changed_hp")
+		new_player.score.connect("scored_points",Callable(self,"_on_Player_scored_point"))
+		new_player.score.connect("scored_sub_points",Callable(self,"_on_Player_scored_sub_point"))
+		new_player.connect("changed_hp",Callable(self,"_on_Player_changed_hp"))
 	player = new_player
 
 

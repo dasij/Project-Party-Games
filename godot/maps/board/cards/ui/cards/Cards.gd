@@ -16,8 +16,8 @@ func add_card_to_ui(card: Card, draggable := true):
 		CardUI = preload("res://maps/board/cards/ui/draggable/DraggableCard.tscn")
 	else:
 		CardUI = preload("res://maps/board/cards/ui/CardUI.tscn")
-	CardUI = CardUI.instance()
+	CardUI = CardUI.instantiate()
 	# TODO: this can be done in a better? (without setting min_size)
-	CardUI.rect_min_size = Vector2(105, 149)
+	CardUI.custom_minimum_size = Vector2(105, 149)
 	CardUI.card = card
 	self.add_child(CardUI)

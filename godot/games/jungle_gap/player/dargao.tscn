@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://games/jungle_gap/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/mini_games/dragao.png" type="Texture" id=2]
-[ext_resource path="res://assets/mini_games/helah_bar.tres" type="Texture" id=3]
+[ext_resource path="res://assets/mini_games/dragao.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/mini_games/helah_bar.tres" type="Texture2D" id=3]
 
 [node name="Dragao" instance=ExtResource( 1 )]
 scale = Vector2( 2, 2 )
 script = null
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
@@ -18,11 +18,11 @@ script = null
 [node name="Attack" parent="States" index="1"]
 script = null
 
-[node name="HealthBar" type="TextureProgress" parent="." index="7"]
-margin_left = -23.0
-margin_top = -33.0
-margin_right = 29.0
-margin_bottom = -21.0
+[node name="HealthBar" type="TextureProgressBar" parent="." index="7"]
+offset_left = -23.0
+offset_top = -33.0
+offset_right = 29.0
+offset_bottom = -21.0
 value = 80.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 3 )

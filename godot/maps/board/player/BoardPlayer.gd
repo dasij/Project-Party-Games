@@ -4,17 +4,17 @@ class_name BoardPlayer
 signal do_action
 signal changed_hp
 
-onready var animation: Tween = $Tween
-onready var camera: Camera2D = $Camera2D
+@onready var animation := create_tween()
+@onready var camera: Camera2D = $Camera2D
 
-export var nick: String = ""
-export var speed := 200
+@export var nick: String = ""
+@export var speed := 200
 
-var actual_tile: Tile = null setget set_actual_tile
+var actual_tile: Tile = null : set = set_actual_tile
 var deck := Deck.new()
 var score := Score.new()
 var max_hp := 30
-var hp := max_hp setget set_hp
+var hp := max_hp : set = set_hp
 var dead = false
 var initial_scale = self.scale
 # TODO:
@@ -25,10 +25,9 @@ var graph = null
 
 
 func set_hp(new_hp):
-	yield(get_tree(), "idle_frame")
 	if new_hp <= 0:
 		hp = 0
-		yield(self.die(), "completed")
+		await self.die()
 	elif new_hp >= max_hp:
 		hp = max_hp
 	else:
@@ -36,7 +35,7 @@ func set_hp(new_hp):
 	emit_signal("changed_hp", hp)
 
 
-func get_camera() -> Camera2D:
+func get_camera_3d() -> Camera2D:
 	return camera
 
 
@@ -51,8 +50,8 @@ func set_actual_tile(new_tile: Tile):
 
 
 func move():
-	var next_tile = yield(actual_tile.get_next_tile(), "completed") as Tile
-	yield(move_to_tile(next_tile), "completed")
+	var next_tile = await actual_tile.get_next_tile()
+	await move_to_tile(next_tile)
 
 
 func move_to_tile(new_tile: Tile):
@@ -68,41 +67,39 @@ func move_to_tile(new_tile: Tile):
 	for point in curve:
 		var distance := self.position.distance_to(point)
 		var duration := distance / self.speed
-		animation.interpolate_property(
-			self, "position", self.position, point, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+		animation.tween_property(
+			self, "position", point, duration
 		)
-		animation.start()
-		yield(animation, "tween_completed")
-	yield(get_tree(), "idle_frame")
+		await animation.finished
 	set_actual_tile(new_tile)
 
 
 func play_pre_turn(board):
-	yield(self.actual_tile.play_pre_turn_effect(board, self), "completed")
+	await self.actual_tile.play_pre_turn_effect(board, self)
 
 
 func play_turn(board):
 	for card in deck.hand:
 		if self.dead:
 			break
-		yield(self, "do_action")
-		yield(card.play_effect(board, self), "completed")
+		await self.do_action
+		await card.play_effect(board, self)
 	deck.reset_hand()
 
 
 func die():
 	self.dead = true
-	var nearest_graveyard = self.graph.bfs(actual_tile, funcref(Tile, "is_graveyard"))
-	yield(animate_dead(), "completed")
+	var nearest_graveyard = self.graph.bfs(actual_tile, func(node): Tile.is_graveyard(node))
+	await animate_dead()
 	self.position = nearest_graveyard.position
 	self.actual_tile = nearest_graveyard
-	yield(animate_restore(), "completed")
+	await animate_restore()
 
 
 func restore():
 	self.hp = max_hp
 	self.dead = false
-	yield(animate_scale(), "completed")
+	await animate_scale()
 
 
 func _input(event):
@@ -111,29 +108,24 @@ func _input(event):
 
 
 func animate_dead():
-	animation.interpolate_property(self, "scale", scale, Vector2.ZERO, 0.5)
-	animation.start()
-	yield(animation, "tween_completed")
+	animation.tween_property(self, "scale", Vector2.ZERO, 0.5)
+	await animation.finished
 
 
 func animate_restore():
-	animation.interpolate_property(self, "scale", scale, initial_scale, 0.5)
-	animation.start()
-	yield(animation, "tween_completed")
+	animation.tween_property(self, "scale", initial_scale, 0.5)
+	await animation.finished
 
 
 func animate_scale():
-	animation.interpolate_property(self, "scale", scale, scale * 2, 0.5)
-	animation.start()
-	yield(animation, "tween_completed")
-	animation.interpolate_property(self, "scale", scale, scale / 2, 0.5)
-	animation.start()
-	yield(animation, "tween_completed")
+	animation.tween_property(self, "scale", scale * 2, 0.5)
+	await animation.finished
+	animation.tween_property(self, "scale", scale / 2, 0.5)
+	await animation.finished
 
 
 func animate_rotation():
-	animation.interpolate_property(
-		self, "rotation_degrees", rotation_degrees, rotation_degrees + 360, 1
-	)
-	animation.start()
-	yield(animation, "tween_completed")
+	animation.tween_property(
+		self, "rotation_degrees", 360, 1
+	).as_relative()
+	await animation.finished

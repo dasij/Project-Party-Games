@@ -4,7 +4,7 @@
 [ext_resource path="res://maps/board/camera/BaseCamera.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 0, 0 )
+size = Vector2( 0, 0 )
 
 [node name="TransitionCamera" type="RigidBody2D"]
 mode = 1

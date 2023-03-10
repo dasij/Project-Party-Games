@@ -1,4 +1,4 @@
-tool
+@tool
 extends Path2D
 
 var from_tile = null
@@ -19,7 +19,7 @@ func link(from_tile, to_tile):
 
 
 func _process(_delta):
-	if Engine.editor_hint:
+	if Engine.is_editor_hint():
 		if from_tile != null:
 			self.curve.set_point_position(0, from_tile.position)
 		if to_tile != null:
@@ -28,6 +28,6 @@ func _process(_delta):
 
 
 func _ready():
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 		set_process(false)
 		self.hide()

@@ -3,26 +3,24 @@ extends PanelContainer
 signal discarded(card)
 
 
-func can_drop_data(_position, data):
+func _can_drop_data(_position, data):
 	if "card" in data:
 		return data.card != null
 	return false
 
 
-func drop_data(_position, data):
+func _drop_data(_position, data):
 	emit_signal("discarded", data.card)
 
 
 func animate():
-	var animation := $Tween as Tween
+	var animation := create_tween().set_trans(Tween.TRANS_LINEAR)
 	if animation != null:
-		animation.interpolate_property(
-			self, "rect_scale", rect_scale, rect_scale * 1.25, 0.5, Tween.TRANS_LINEAR
+		animation.tween_property(
+			self, "scale", scale * 1.25, 0.5
 		)
-		animation.start()
-		yield(animation, "tween_completed")
-		animation.interpolate_property(
-			self, "rect_scale", rect_scale, rect_scale / 1.25, 0.5, Tween.TRANS_LINEAR
+		await animation.finished
+		animation.tween_property(
+			self, "scale", scale / 1.25, 0.5
 		)
-		animation.start()
-		yield(animation, "tween_completed")
+		await animation.finished

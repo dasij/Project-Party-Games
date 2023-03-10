@@ -1,8 +1,8 @@
 extends Control
 
-onready var Cards := $Cards
+@onready var Cards := $Cards
 
-var deck = null setget set_deck
+var deck = null : set = set_deck
 
 
 func set_deck(new_deck):

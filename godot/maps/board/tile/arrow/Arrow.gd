@@ -1,8 +1,8 @@
-tool
+@tool
 extends TextureButton
 class_name Arrow
 
-export var to_tile_idx = 0
+@export var to_tile_idx = 0
 
 
 func init(to_tile_idx):
@@ -11,7 +11,7 @@ func init(to_tile_idx):
 
 
 func _ready():
-	self.connect("pressed", self, "_on_Arrow_pressed")
+	self.connect("pressed",Callable(self,"_on_Arrow_pressed"))
 
 
 func _on_Arrow_pressed():

@@ -1,9 +1,9 @@
 extends RigidBody2D
 
-onready var TransitionCamera := $TransitionCamera
-onready var TweenCamera := $Tween
+@onready var TransitionCamera := $TransitionCamera
+@onready var animation := create_tween()
 
-export var speed := 700
+@export var speed := 700
 
 
 func transition_to(active_node: Node2D, next_node: Node2D) -> void:
@@ -18,30 +18,17 @@ func transition_to(active_node: Node2D, next_node: Node2D) -> void:
 		var duration = (from_position.distance_to(next_node.position)) / speed
 
 		TransitionCamera.make_current()
-		TweenCamera.follow_property(
-			self,
-			"position",
-			from_position,
-			next_node,
-			"position",
-			duration,
-			Tween.TRANS_CUBIC,
-			Tween.EASE_IN_OUT
-		)
-		TweenCamera.follow_property(
-			TransitionCamera,
-			"zoom",
-			from_zoom,
-			next_camera,
-			"zoom",
-			duration,
-			Tween.TRANS_CUBIC,
-			Tween.EASE_IN_OUT
-		)
-		TweenCamera.start()
-		yield(TweenCamera, "tween_completed")
+		animation.tween_method(
+			func(t): self.position = next_node.position,
+			0,
+			1,
+			duration
+		).set_trans(Tween.TRANS_SINE)
+		animation.parallel().tween_method(
+			func(t): TransitionCamera.zoom = next_camera.zoom,
+			0,
+			1,
+			duration
+		).set_trans(Tween.TRANS_SINE)
+		await animation.finished
 		next_node.get_camera().make_current()
-
-
-func set_position(new_pos: Vector2) -> void:
-	self.position = new_pos

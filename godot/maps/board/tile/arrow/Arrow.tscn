@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://maps/board/tile/arrow/Arrow.gd" type="Script" id=1]
-[ext_resource path="res://assets/tiles/arrow.png" type="Texture" id=2]
-[ext_resource path="res://assets/tiles/arrow_hover.png" type="Texture" id=3]
-[ext_resource path="res://assets/tiles/arrow_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/tiles/arrow.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/tiles/arrow_hover.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/tiles/arrow_pressed.png" type="Texture2D" id=4]
 
 [node name="Arrow" type="TextureButton"]
-margin_top = -10.0
-margin_right = 64.0
-margin_bottom = 13.0
-rect_pivot_offset = Vector2( 0, 10 )
+offset_top = -10.0
+offset_right = 64.0
+offset_bottom = 13.0
+pivot_offset = Vector2( 0, 10 )
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 4 )

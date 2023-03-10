@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/score_ui/health_bar_completed.png" type="Texture" id=1]
-[ext_resource path="res://assets/score_ui/health_bar_empty.png" type="Texture" id=2]
+[ext_resource path="res://assets/score_ui/health_bar_completed.png" type="Texture2D" id=1]
+[ext_resource path="res://assets/score_ui/health_bar_empty.png" type="Texture2D" id=2]
 [ext_resource path="res://maps/board/player/score/health_bar/HealthBar.gd" type="Script" id=3]
 
 [node name="HealthBar" type="Control"]
-margin_right = 239.0
-margin_bottom = 48.0
+offset_right = 239.0
+offset_bottom = 48.0
 script = ExtResource( 3 )
 
-[node name="HealthTransition" type="TextureProgress" parent="."]
+[node name="HealthTransition" type="TextureProgressBar" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -124, -30 )
+pivot_offset = Vector2( -124, -30 )
 max_value = 32.0
 value = 32.0
 texture_under = ExtResource( 2 )
@@ -20,10 +20,10 @@ texture_progress = ExtResource( 1 )
 tint_progress = Color( 0.705882, 0.141176, 0.141176, 1 )
 nine_patch_stretch = true
 
-[node name="HealthBar" type="TextureProgress" parent="."]
+[node name="HealthBar" type="TextureProgressBar" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -124, -30 )
+pivot_offset = Vector2( -124, -30 )
 max_value = 32.0
 value = 32.0
 texture_progress = ExtResource( 1 )

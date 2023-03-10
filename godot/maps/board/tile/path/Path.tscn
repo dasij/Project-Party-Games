@@ -4,9 +4,9 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array(  )
+"points": PackedVector2Array(  )
 }
 
-[node name="Path" type="Path2D"]
+[node name="Path3D" type="Path2D"]
 curve = SubResource( 1 )
 script = ExtResource( 1 )

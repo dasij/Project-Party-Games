@@ -1,9 +1,9 @@
 extends Control
 class_name DraggableCard
 
-onready var CardUI := $CardUI
+@onready var CardUI := $CardUI
 
-var card = null setget set_card
+var card = null : set = set_card
 
 
 func set_card(new_card):
@@ -16,7 +16,7 @@ func _ready():
 	set_card(card)
 
 
-func get_drag_data(_position):
+func _get_drag_data(_position):
 	var data = {}
 	data["card"] = card
 
@@ -33,10 +33,10 @@ static func create_dragged_card(texture) -> Control:
 	drag_texture.expand = true
 	drag_texture.texture = texture
 	drag_texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	drag_texture.rect_size = Vector2(100, 100)
+	drag_texture.size = Vector2(100, 100)
 
 	var control = Control.new()
 	control.add_child(drag_texture)
-	drag_texture.rect_position = -0.5 * drag_texture.rect_size
+	drag_texture.position = -0.5 * drag_texture.size
 
 	return control

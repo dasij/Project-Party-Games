@@ -8,7 +8,7 @@ func play_title(title_text: String, animation := "Fade") -> void:
 	if TitleLabel != null and TitleAnimation != null:
 		TitleLabel.text = title_text
 		TitleAnimation.play("Fade")
-		yield(TitleAnimation, "animation_finished")
+		await TitleAnimation.animation_finished
 	else:
 		# TODO: see a way to remove this
-		yield(get_tree(), "idle_frame")
+		await get_tree().idle_frame

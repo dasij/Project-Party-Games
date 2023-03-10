@@ -3,16 +3,18 @@ class_name JG_MoveState
 
 var velocity: Vector2
 
-export(int) var walk_speek
+@export var walk_speek: int
 
-export(NodePath) onready var player = get_node(player) as KinematicBody2D
+@export(NodePath) onready var player = get_node(player) as CharacterBody2D
 
 func move() -> void:
 	if player.is_attacking:
 		return
 		
 	velocity = get_direction() * walk_speek
-	player.move_and_slide(velocity)
+	player.set_velocity(velocity)
+	player.move_and_slide()
+	player.velocity
 	
 func get_direction() -> Vector2:
 #	if Input.is_mouse_button_pressed(2):
