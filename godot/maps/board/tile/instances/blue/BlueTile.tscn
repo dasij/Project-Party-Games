@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bfpa1dxf8inp0"]
 
-[ext_resource path="res://maps/board/tile/instances/blue/BlueTile.gd" type="Script" id=1]
-[ext_resource path="res://maps/board/tile/Tile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/tiles/icon.png" type="Texture2D" id=3]
+[ext_resource type="Script" path="res://maps/board/tile/instances/blue/BlueTile.gd" id="1"]
+[ext_resource type="PackedScene" path="res://maps/board/tile/Tile.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://d2ljg25ercjwk" path="res://assets/tiles/icon.png" id="3"]
 
-[node name="Tile" instance=ExtResource( 2 )]
-script = ExtResource( 1 )
+[node name="Tile" instance=ExtResource("2")]
+script = ExtResource("1")
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2( 0.3125, 0.3125 )
-texture = ExtResource( 3 )
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("3")
