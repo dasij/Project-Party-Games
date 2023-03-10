@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" path="res://maps/board/cards/ui/play/PlayUI.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://btbehnxqsibnx" path="res://maps/board/cards/ui/discard/DiscardUI.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ca7bqqv4lemw" path="res://maps/board/ui/title/Title.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://maps/board/ui/camera/GlobalCamera.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://dbeaacv6pv0dp" path="res://maps/board/ui/camera/GlobalCamera.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://maps/board/ui/log/Log.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/instances/blue/BlueTile.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/instances/red/RedTile.tscn" id="15"]

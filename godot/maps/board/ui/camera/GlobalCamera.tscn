@@ -12,5 +12,4 @@ script = ExtResource("1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
 
-[node name="Camera3D" parent="." instance=ExtResource("2")]
-zoom = Vector2(1, 1)
+[node name="Camera" parent="." instance=ExtResource("2")]

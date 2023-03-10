@@ -19,15 +19,15 @@ func transition_to(active_node: Node2D, next_node: Node2D) -> void:
 
 		TransitionCamera.make_current()
 		tweener.tween_method(
-			func(t): self.position = next_node.position,
-			0,
-			1,
+			func(t): self.position = from_position.lerp(next_node.position, t),
+			0.0,
+			1.0,
 			duration
 		)
 		tweener.parallel().tween_method(
-			func(t): TransitionCamera.zoom = next_camera.zoom,
-			0,
-			1,
+			func(t): TransitionCamera.zoom = from_zoom.lerp(next_camera.zoom, t),
+			0.0,
+			1.0,
 			duration
 		)
 		await tweener.finished
