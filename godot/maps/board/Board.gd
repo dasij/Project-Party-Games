@@ -83,7 +83,6 @@ func discard_phase(player):
 		await DiscardUI.discarded
 		DiscardUI.hide()
 		DiscardUI.deck = null
-	await get_tree().idle_frame
 
 
 func game_round(players):
