@@ -56,6 +56,8 @@ func _on_Slot_removed_card(_card, hand_idx: int):
 
 
 func _on_Slot_added_card(card, hand_idx: int):
+	print_debug("slot added_card")
+	print_debug(card, " ", hand_idx)
 	deck.pick_card(card, hand_idx)
 
 
@@ -69,6 +71,7 @@ func _on_Slot_changed_card(_old_card, new_card, hand_idx):
 
 
 func _on_Play_pressed():
+	print_debug("pressed play button")
 	emit_signal("pressed_play")
 
 
@@ -81,9 +84,10 @@ func _on_Deck_removed_from_deck(_card: Card, idx: int):
 
 
 func _on_Deck_added_to_hand(_card: Card, _idx: int):
-	PlayButton.set_disabled(false)
+	print_debug("added to hand")
+	PlayButton.disabled = false
 
 
 func _on_Deck_removed_from_hand(_card: Card, _idx: int):
-	if deck.hand.size() == 0:
-		PlayButton.set_disabled(true)
+	if deck.get_hand().size() == 0:
+		PlayButton.disabled = true

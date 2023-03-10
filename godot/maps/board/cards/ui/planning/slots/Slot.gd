@@ -50,6 +50,7 @@ func _drop_data(_position, data):
 	elif self.card != null:
 		emit_signal("changed_card", self.card, data.card, number)
 	else:
+		print_debug("emitting added_card on slot")
 		emit_signal("added_card", data.card, number)
 	self.card = data.card
 

@@ -9,7 +9,7 @@ func set_deck(new_deck):
 	Cards.reset()
 	if new_deck != null:
 		if Cards != null:
-			Cards.add_cards_to_ui(new_deck.hand, false)
+			Cards.add_cards_to_ui(new_deck.get_hand(), false)
 	deck = new_deck
 
 

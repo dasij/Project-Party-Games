@@ -7,10 +7,10 @@ signal added_to_hand(card, idx)
 signal removed_from_hand(card, idx)
 
 var deck := []
-var hand := [null, null, null, null, null] : get = get_tracker_hand
+var hand := [null, null, null, null, null]
 
 
-func get_tracker_hand() -> Array:
+func get_hand() -> Array:
 	var result := []
 	for hand_card in hand:
 		if hand_card != null:
@@ -50,10 +50,15 @@ func change_hand_order(from_idx, to_idx):
 
 
 func pick_card(card: Card, hand_idx: int):
+	print_debug(card, " ", hand_idx)
+	print_debug(hand, " ", self.hand)
+	print_debug(hand.size())
 	if hand_idx < hand.size() and hand_idx >= 0:
 		var deck_idx = deck.find(card)
+		print_debug(deck_idx)
 		if deck_idx != -1:
 			deck.remove_at(deck_idx)
 			hand[hand_idx] = card
+			print_debug("emitting added_to_hand")
 			emit_signal("added_to_hand", card, hand_idx)
 			emit_signal("removed_from_deck", card, deck_idx)

@@ -11,12 +11,4 @@ script = ExtResource("1")
 scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("2")
 
-[node name="Tween" type="Tween" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-editor_description = ""
-script = null
-
 [node name="Camera2D" parent="." instance=ExtResource("3")]

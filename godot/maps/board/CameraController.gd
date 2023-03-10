@@ -23,9 +23,9 @@ var transitioning := false
 
 func set_active_node(new_node):
 	if active_node == null:
-		new_node.get_camera_3d().make_current()
+		new_node.get_camera().make_current()
 	elif new_node == null:
-		active_node.get_camera_3d().current = false
+		active_node.get_camera().current = false
 	else:
 		transitioning = true
 		await TransitionCamera.transition_to(active_node, new_node)

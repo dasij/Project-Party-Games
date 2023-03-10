@@ -7,16 +7,16 @@
 [ext_resource type="Script" path="res://maps/board/graph/Tiles.gd" id="5"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/instances/graveyard/Graveyard.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://maps/board/player/score/ScoreUI.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://maps/board/cards/ui/planning/PlanningUI.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://b2brro8euj2k4" path="res://maps/board/cards/ui/planning/PlanningUI.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://maps/board/cards/ui/play/PlayUI.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://maps/board/cards/ui/discard/DiscardUI.tscn" id="10"]
-[ext_resource type="PackedScene" path="res://maps/board/ui/title/Title.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://btbehnxqsibnx" path="res://maps/board/cards/ui/discard/DiscardUI.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://ca7bqqv4lemw" path="res://maps/board/ui/title/Title.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://maps/board/ui/camera/GlobalCamera.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://maps/board/ui/log/Log.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/instances/blue/BlueTile.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/instances/red/RedTile.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/instances/black/BlackTile.tscn" id="16"]
-[ext_resource type="PackedScene" path="res://maps/board/ui/camera/TransitionCamera.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://dxkmenf7va4sb" path="res://maps/board/ui/camera/TransitionCamera.tscn" id="17"]
 [ext_resource type="Script" path="res://maps/board/Phases.gd" id="18"]
 [ext_resource type="PackedScene" path="res://maps/board/ui/round/Round.tscn" id="19"]
 [ext_resource type="Script" path="res://maps/board/graph/Graph.gd" id="22"]
@@ -175,6 +175,8 @@ script = ExtResource("18")
 [node name="Planning" parent="UI/Screen/Phases" instance=ExtResource("8")]
 visible = false
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 
 [node name="Play" parent="UI/Screen/Phases" instance=ExtResource("9")]
 visible = false
@@ -183,12 +185,10 @@ anchors_preset = 0
 [node name="DiscardUI" parent="UI/Screen/Phases" instance=ExtResource("10")]
 visible = false
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 
 [node name="Title" parent="UI/Screen" instance=ExtResource("11")]
-layout_mode = 3
-anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Log" parent="UI/Screen" instance=ExtResource("13")]
 anchors_preset = 6
@@ -363,11 +363,11 @@ next_tiles_path = [NodePath("../Tile9")]
 
 [node name="Players" type="Node2D" parent="."]
 
-[node name="Player2" parent="Players" instance=ExtResource("4")]
-nick = "Gama"
-
 [node name="Player1" parent="Players" instance=ExtResource("4")]
 nick = "Vasco"
+
+[node name="Player2" parent="Players" instance=ExtResource("4")]
+nick = "Gama"
 
 [node name="CameraController" type="Node2D" parent="."]
 script = ExtResource("3")

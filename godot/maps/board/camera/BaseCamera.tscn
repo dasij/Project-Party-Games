@@ -1,12 +1,9 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://d3hqn4uki8swo"]
 
 [node name="BaseCamera" type="Camera2D"]
-zoom = Vector2( 0.4, 0.4 )
+zoom = Vector2(2, 2)
 limit_left = -100
 limit_top = -150
 limit_right = 1150
 limit_bottom = 700
 editor_draw_limits = true
-__meta__ = {
-"_editor_description_": ""
-}

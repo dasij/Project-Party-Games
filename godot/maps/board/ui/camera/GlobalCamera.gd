@@ -16,7 +16,7 @@ func deactivate() -> void:
 	self.set_process(false)
 
 
-func get_camera_3d():
+func get_camera():
 	return GlobalCamera
 
 

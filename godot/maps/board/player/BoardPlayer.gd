@@ -4,7 +4,6 @@ class_name BoardPlayer
 signal do_action
 signal changed_hp
 
-@onready var animation := create_tween()
 @onready var camera: Camera2D = $Camera2D
 
 @export var nick: String = ""
@@ -35,7 +34,7 @@ func set_hp(new_hp):
 	emit_signal("changed_hp", hp)
 
 
-func get_camera_3d() -> Camera2D:
+func get_camera() -> Camera2D:
 	return camera
 
 
@@ -67,10 +66,11 @@ func move_to_tile(new_tile: Tile):
 	for point in curve:
 		var distance := self.position.distance_to(point)
 		var duration := distance / self.speed
-		animation.tween_property(
+		var tweener = create_tween()
+		tweener.tween_property(
 			self, "position", point, duration
 		)
-		await animation.finished
+		await tweener.finished
 	set_actual_tile(new_tile)
 
 
@@ -79,7 +79,7 @@ func play_pre_turn(board):
 
 
 func play_turn(board):
-	for card in deck.hand:
+	for card in deck.get_hand():
 		if self.dead:
 			break
 		await self.do_action
@@ -108,24 +108,27 @@ func _input(event):
 
 
 func animate_dead():
-	animation.tween_property(self, "scale", Vector2.ZERO, 0.5)
-	await animation.finished
+	var tweener = create_tween()
+	tweener.tween_property(self, "scale", Vector2.ZERO, 0.5)
+	await tweener.finished
 
 
 func animate_restore():
-	animation.tween_property(self, "scale", initial_scale, 0.5)
-	await animation.finished
+	var tweener = create_tween()
+	tweener.tween_property(self, "scale", initial_scale, 0.5)
+	await tweener.finished
 
 
 func animate_scale():
-	animation.tween_property(self, "scale", scale * 2, 0.5)
-	await animation.finished
-	animation.tween_property(self, "scale", scale / 2, 0.5)
-	await animation.finished
+	var tweener = create_tween()
+	tweener.tween_property(self, "scale", scale * 2, 0.5)
+	tweener.tween_property(self, "scale", scale / 2, 0.5)
+	await tweener.finished
 
 
 func animate_rotation():
-	animation.tween_property(
+	var tweener = create_tween()
+	tweener.tween_property(
 		self, "rotation_degrees", 360, 1
 	).as_relative()
-	await animation.finished
+	await tweener.finished

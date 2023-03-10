@@ -14,13 +14,11 @@ func _drop_data(_position, data):
 
 
 func animate():
-	var animation := create_tween().set_trans(Tween.TRANS_LINEAR)
-	if animation != null:
-		animation.tween_property(
-			self, "scale", scale * 1.25, 0.5
-		)
-		await animation.finished
-		animation.tween_property(
-			self, "scale", scale / 1.25, 0.5
-		)
-		await animation.finished
+	var tweener := create_tween().set_trans(Tween.TRANS_LINEAR)
+	tweener.tween_property(
+		self, "scale", scale * 1.25, 0.5
+	)
+	tweener.tween_property(
+		self, "scale", scale / 1.25, 0.5
+	)
+	await tweener.finished

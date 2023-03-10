@@ -1,6 +1,5 @@
 extends Control
 
-
 func play_title(title_text: String, animation := "Fade") -> void:
 	var TitleLabel := $Label as Label
 	var TitleAnimation := $AnimationPlayer as AnimationPlayer
@@ -9,6 +8,3 @@ func play_title(title_text: String, animation := "Fade") -> void:
 		TitleLabel.text = title_text
 		TitleAnimation.play("Fade")
 		await TitleAnimation.animation_finished
-	else:
-		# TODO: see a way to remove this
-		await get_tree().idle_frame

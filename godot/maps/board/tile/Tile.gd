@@ -113,7 +113,7 @@ func play_effect(board, player):
 
 
 func _to_string():
-	return self.name
+	return str(self.name)
 
 
 func _ready():
