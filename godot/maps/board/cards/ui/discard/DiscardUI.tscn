@@ -10,6 +10,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(-1421, -285)
 script = ExtResource("1")
 
@@ -49,4 +51,11 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="Cards" parent="." instance=ExtResource("2")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 0.0
+offset_right = 0.0
+grow_horizontal = 2
+grow_vertical = 0
