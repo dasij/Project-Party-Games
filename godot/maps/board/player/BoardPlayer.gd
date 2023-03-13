@@ -122,7 +122,7 @@ func animate_restore():
 func animate_scale():
 	var tweener = create_tween()
 	tweener.tween_property(self, "scale", scale * 2, 0.5)
-	tweener.tween_property(self, "scale", scale / 2, 0.5)
+	tweener.tween_property(self, "scale", scale, 0.5)
 	await tweener.finished
 
 
