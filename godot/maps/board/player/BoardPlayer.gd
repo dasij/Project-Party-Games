@@ -89,7 +89,7 @@ func play_turn(board):
 
 func die():
 	self.dead = true
-	var nearest_graveyard = self.graph.bfs(actual_tile, func(node): Tile.is_graveyard(node))
+	var nearest_graveyard = self.graph.bfs(actual_tile, func(node): return Tile.is_graveyard(node))
 	await animate_dead()
 	self.position = nearest_graveyard.position
 	self.actual_tile = nearest_graveyard

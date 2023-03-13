@@ -126,5 +126,5 @@ func _on_Tile_tiles_ready():
 	self.tiles_ready = true
 
 
-static func is_graveyard(tile):
+static func is_graveyard(tile: Tile):
 	return tile.tile_type == TILE_TYPE.GRAVEYARD
