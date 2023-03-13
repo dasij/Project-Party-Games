@@ -45,7 +45,7 @@ func _can_drop_data(_position, data):
 func _drop_data(_position, data):
 	if "from" in data and data.from != null:
 		var FromSlot = data.from
-		FromSlot.card = self.slot_card
+		FromSlot.slot_card = self.slot_card
 		emit_signal("changed_order", FromSlot.number, number)
 	elif self.slot_card != null:
 		emit_signal("changed_card", self.slot_card, data.card, number)
