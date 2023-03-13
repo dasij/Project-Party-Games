@@ -25,6 +25,9 @@ offset_left = -330.0
 offset_top = -196.0
 offset_right = 331.0
 offset_bottom = -144.0
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Garbage" type="PanelContainer" parent="."]
 layout_mode = 0
