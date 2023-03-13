@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2brro8euj2k4"]
 
-[ext_resource type="PackedScene" path="res://maps/board/cards/ui/planning/slots/CardSlotUI.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://b53q14vcejmfx" path="res://maps/board/cards/ui/planning/slots/CardSlotUI.tscn" id="1"]
 [ext_resource type="Script" path="res://maps/board/cards/ui/planning/PlanningUI.gd" id="2"]
 [ext_resource type="PackedScene" path="res://maps/board/cards/ui/cards/Cards.tscn" id="3"]
 

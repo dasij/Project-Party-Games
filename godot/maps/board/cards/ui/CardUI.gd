@@ -10,10 +10,10 @@ var card = null : set = set_card
 
 
 func set_card(new_card: Card):
+	card = new_card
 	if card != null:
 		card.disconnect("will_play_effect",Callable(self,"_on_Card_will_play_effect"))
 		card.disconnect("played_effect",Callable(self,"_on_Card_played_effect"))
-	card = new_card
 	if new_card != null:
 		card.connect("will_play_effect",Callable(self,"_on_Card_will_play_effect"))
 		card.connect("played_effect",Callable(self,"_on_Card_played_effect"))

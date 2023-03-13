@@ -18,6 +18,12 @@ func set_deck(new_deck):
 		new_deck.connect("removed_from_hand",Callable(self,"_on_Deck_removed_from_hand"))
 		if Cards != null:
 			Cards.add_cards_to_ui(new_deck.deck)
+	elif new_deck == null and deck != null:
+		# TODO: better way to do this?
+		deck.disconnect("added_to_deck",Callable(self,"_on_Deck_added_to_deck"))
+		deck.disconnect("removed_from_deck",Callable(self,"_on_Deck_removed_from_deck"))
+		deck.disconnect("added_to_hand",Callable(self,"_on_Deck_added_to_hand"))
+		deck.disconnect("removed_from_hand",Callable(self,"_on_Deck_removed_from_hand"))
 	deck = new_deck
 
 
@@ -30,16 +36,6 @@ func reset():
 	# reset all hand slots
 	for slot in Slots.get_children():
 		slot.reset()
-
-	# if there is a deck remove all its connections and put him as null
-	if deck != null:
-		deck = deck as Deck
-		# TODO: better way to do this?
-		deck.disconnect("added_to_deck",Callable(self,"_on_Deck_added_to_deck"))
-		deck.disconnect("removed_from_deck",Callable(self,"_on_Deck_removed_from_deck"))
-		deck.disconnect("added_to_hand",Callable(self,"_on_Deck_added_to_hand"))
-		deck.disconnect("removed_from_hand",Callable(self,"_on_Deck_removed_from_hand"))
-		deck = null
 
 
 func _ready():
