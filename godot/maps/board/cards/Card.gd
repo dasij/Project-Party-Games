@@ -12,19 +12,19 @@ enum CARD_TYPE { DICE, NORMAL, RARE }
 @export var description: String = ""
 
 
-func _to_string():
+func _to_string() -> String:
 	return self.title
 
 
-func record(board, player):
+func record(board: Board, player: BoardPlayer):
 	return "%s played %s" % [player.nick, title]
 
 
-func effect(board, player):
+func effect(board: Board, player: BoardPlayer) -> void:
 	pass
 
 
-func play_effect(board, player):
+func play_effect(board: Board, player: BoardPlayer) -> void:
 	emit_signal("will_play_effect")
 	CardEvent.emit_signal("will_play_effect")
 	CardEvent.emit_signal("record", record(board, player))

@@ -1,18 +1,19 @@
 extends Control
+class_name ScorePlayerUI
 
-@onready var points_label = $Back/Points
-@onready var sub_points_label = $Back/SubPoints
+@onready var points_label := $Back/Points
+@onready var sub_points_label := $Back/SubPoints
 @onready var health_bar := $Back/HealthBar
 
 var player = null : set = set_player
 
 
-func init(player):
+func init(player: BoardPlayer) -> ScorePlayerUI:
 	set_player(player)
 	return self
 
 
-func set_player(new_player):
+func set_player(new_player: BoardPlayer) -> void:
 	if player != null:
 		player.score.disconnect("scored_points",Callable(self,"_on_Player_scored_point"))
 		player.score.disconnect("scored_sub_points",Callable(self,"_on_Player_scored_sub_point"))
@@ -24,15 +25,15 @@ func set_player(new_player):
 	player = new_player
 
 
-func _on_Player_scored_point(points):
+func _on_Player_scored_point(points: int) -> void:
 	points_label.text = str(points)
 
 
-func _on_Player_scored_sub_point(sub_points):
+func _on_Player_scored_sub_point(sub_points: int) -> void:
 	sub_points_label.text = str(sub_points)
 
 
-func _on_Player_changed_hp(new_hp):
+func _on_Player_changed_hp(new_hp: int) -> void:
 	# checks if health bar is initialized
 	if health_bar != null:
 		health_bar.update_health(new_hp)

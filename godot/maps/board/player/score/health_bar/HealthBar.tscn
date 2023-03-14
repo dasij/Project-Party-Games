@@ -21,7 +21,7 @@ value = 32.0
 nine_patch_stretch = true
 texture_under = ExtResource("2")
 texture_progress = ExtResource("1")
-tint_progress = Color(0.705882, 0.141176, 0.141176, 1)
+tint_progress = Color(0.576471, 0.0117647, 0.764706, 1)
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 layout_mode = 0

@@ -23,7 +23,7 @@ var initial_scale = self.scale
 var graph = null
 
 
-func set_hp(new_hp):
+func set_hp(new_hp: int) -> void:
 	if new_hp <= 0:
 		hp = 0
 		await self.die()
@@ -38,7 +38,7 @@ func get_camera() -> Camera2D:
 	return camera
 
 
-func set_actual_tile(new_tile: Tile):
+func set_actual_tile(new_tile: Tile) -> void:
 	if actual_tile == null:
 		self.position = new_tile.position
 		actual_tile = new_tile
@@ -48,17 +48,14 @@ func set_actual_tile(new_tile: Tile):
 		actual_tile = new_tile
 
 
-func move():
+func move() -> void:
 	var next_tile = await actual_tile.get_next_tile()
 	await move_to_tile(next_tile)
 
 
-func move_to_tile(new_tile: Tile):
+func move_to_tile(new_tile: Tile) -> void:
 	var new_position = new_tile.position
 	var old_position = actual_tile.position
-
-#	var distance := new_tile.position.distance_to(actual_tile.position)
-#	var duration := distance / self.speed
 
 	var path = self.graph.get_path_node(actual_tile, new_tile) as Path2D
 	var curve = path.curve.tessellate()
@@ -74,11 +71,11 @@ func move_to_tile(new_tile: Tile):
 	set_actual_tile(new_tile)
 
 
-func play_pre_turn(board):
+func play_pre_turn(board: Board) -> void:
 	await self.actual_tile.play_pre_turn_effect(board, self)
 
 
-func play_turn(board):
+func play_turn(board: Board) -> void:
 	for card in deck.get_hand():
 		if self.dead:
 			break
@@ -87,7 +84,7 @@ func play_turn(board):
 	deck.reset_hand()
 
 
-func die():
+func die() -> void:
 	self.dead = true
 	var nearest_graveyard = self.graph.bfs(actual_tile, func(node): return Tile.is_graveyard(node))
 	await animate_dead()
@@ -96,37 +93,37 @@ func die():
 	await animate_restore()
 
 
-func restore():
+func restore() -> void:
 	self.hp = max_hp
 	self.dead = false
 	await animate_scale()
 
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("confirm"):
 		emit_signal("do_action")
 
 
-func animate_dead():
+func animate_dead() -> void:
 	var tweener = create_tween()
 	tweener.tween_property(self, "scale", Vector2.ZERO, 0.5)
 	await tweener.finished
 
 
-func animate_restore():
+func animate_restore() -> void:
 	var tweener = create_tween()
 	tweener.tween_property(self, "scale", initial_scale, 0.5)
 	await tweener.finished
 
 
-func animate_scale():
+func animate_scale() -> void:
 	var tweener = create_tween()
 	tweener.tween_property(self, "scale", scale * 2, 0.5)
 	tweener.tween_property(self, "scale", scale, 0.5)
 	await tweener.finished
 
 
-func animate_rotation():
+func animate_rotation() -> void:
 	var tweener = create_tween()
 	tweener.tween_property(
 		self, "rotation_degrees", 360, 1

@@ -1,5 +1,6 @@
 @tool
 extends Path2D
+class_name TilePath
 
 var from_tile = null
 var to_tile = null

@@ -49,6 +49,7 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="Card" parent="Slot" instance=ExtResource("3")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 1.0

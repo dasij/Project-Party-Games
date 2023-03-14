@@ -3,8 +3,6 @@ class_name Board
 
 @export var max_round: int = 12
 
-@onready var Players := $Players.get_children()
-
 @onready var Title = $UI/Screen/Title
 @onready var ScoreUI := $UI/Screen/ScoreUI
 
@@ -16,11 +14,12 @@ class_name Board
 var state = {"actual_player": null}
 
 
-func setup_game(players):
+func setup_game(players: Array[Node]) -> void:
 	var start_tile = $Graph/Tiles/Start as Tile
 
 	var i := 0
 	for player in players:
+		player = player as BoardPlayer
 		var score_player_ui = preload("res://maps/board/player/score/ScorePlayerUI.tscn").instantiate().init(player)
 		score_player_ui.set_anchors_preset(Control.PRESET_FULL_RECT)
 		var placeholder = ScoreUI.get_child(i) as Control
@@ -40,7 +39,7 @@ func transition_to_pre_turn(player: BoardPlayer) -> void:
 	await Title.play_title(title)
 
 
-func pre_turn(player: BoardPlayer):
+func pre_turn(player: BoardPlayer) -> void:
 	give_player_random_card(player)
 	give_player_random_card(player)
 	give_player_random_card(player)
@@ -49,19 +48,19 @@ func pre_turn(player: BoardPlayer):
 	pass
 
 
-func give_player_random_card(player: BoardPlayer):
+func give_player_random_card(player: BoardPlayer) -> void:
 	var random_card = CardsCollection.get_random_card()
 	player.deck.add_card_to_deck(random_card)
 
 
-func planning_phase(player: BoardPlayer):
+func planning_phase(player: BoardPlayer) -> void:
 	PlanningUI.deck = player.deck
 	PlanningUI.show()
 	await PlanningUI.pressed_play
 	PlanningUI.hide()
 
 
-func turn(player: BoardPlayer):
+func turn(player: BoardPlayer) -> void:
 	PlayUI.show()
 	PlayUI.deck = player.deck
 	await player.play_turn(self)
@@ -72,11 +71,11 @@ func transition_to_turn(player: BoardPlayer) -> void:
 	await Title.play_title("Playing turn")
 
 
-func post_turn(player: BoardPlayer):
+func post_turn(player: BoardPlayer) -> void:
 	await discard_phase(player)
 
 
-func discard_phase(player):
+func discard_phase(player: BoardPlayer) -> void:
 	if player.deck.deck.size() > 5:
 		DiscardUI.deck = player.deck
 		DiscardUI.show()
@@ -85,7 +84,7 @@ func discard_phase(player):
 		DiscardUI.deck = null
 
 
-func game_round(players):
+func game_round(players: Array[Node]) -> void:
 	for player in players:
 		player = player as BoardPlayer
 		state.actual_player = player
@@ -100,8 +99,9 @@ func game_round(players):
 
 
 func _ready():
-	setup_game(Players)
+	var players := $Players.get_children() as Array[Node]
+	setup_game(players)
 
 	for round_i in max_round:
 		BoardEvent.emit_signal("round_started", round_i, max_round)
-		await game_round(Players)
+		await game_round(players)
