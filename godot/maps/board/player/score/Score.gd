@@ -4,8 +4,8 @@ class_name Score
 signal scored_points(points)
 signal scored_sub_points(sub_points)
 
-var points := 0 setget set_points
-var sub_points := 0 setget set_sub_points
+var points := 0 : set = set_points
+var sub_points := 0 : set = set_sub_points
 var minigames_won := 0
 
 

@@ -5,8 +5,8 @@
 [node name="Round" type="Label"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -221.0
-margin_top = 11.0
-margin_right = -21.0
-margin_bottom = 58.0
+offset_left = -221.0
+offset_top = 11.0
+offset_right = -21.0
+offset_bottom = 58.0
 script = ExtResource( 1 )

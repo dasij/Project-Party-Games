@@ -1,10 +1,10 @@
-extends KinematicBody2D
+extends CharacterBody2D
 class_name JG_Player
 
-onready var move_state: Node = get_node("States/Move")
-onready var attack_state: Node = get_node("States/Attack")
+@onready var move_state: Node = get_node("States/Move")
+@onready var attack_state: Node = get_node("States/Attack")
 
-onready var sprite: Sprite = get_node("Sprite")
+@onready var sprite: Sprite2D = get_node("Sprite2D")
 
 var is_attacking: bool = false
 

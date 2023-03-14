@@ -10,4 +10,4 @@ func _init():
 
 func effect(board, player):
 	player.score.sub_points += 5
-	yield(player.animate_scale(), "completed")
+	await player.animate_scale()

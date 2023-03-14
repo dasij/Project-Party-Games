@@ -20,9 +20,9 @@ func write_logs(logs: Array):
 
 
 func _ready():
-	TileEvent.connect("record", self, "_on_Event_logged")
-	CardEvent.connect("record", self, "_on_Event_logged")
-	BoardEvent.connect("turn_ended", self, "_on_BoardEvent_turn_ended")
+	TileEvent.connect("record",Callable(self,"_on_Event_logged"))
+	CardEvent.connect("record",Callable(self,"_on_Event_logged"))
+	BoardEvent.connect("turn_ended",Callable(self,"_on_BoardEvent_turn_ended"))
 
 
 func _on_Event_logged(text: String) -> void:

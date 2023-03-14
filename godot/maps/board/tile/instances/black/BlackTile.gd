@@ -1,4 +1,4 @@
-tool
+@tool
 extends Tile
 
 
@@ -8,4 +8,4 @@ func effect(board, player):
 	TileEvent.emit_signal(
 		"record", "Black tile: %s gained %s card" % [player.nick, str(random_card)]
 	)
-	yield(player.animate_scale(), "completed")
+	await player.animate_scale()

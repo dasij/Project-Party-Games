@@ -8,4 +8,4 @@ func _init():
 
 
 func effect(board, player):
-	yield(player.set_hp(0), "completed")
+	await player.set_hp(0)

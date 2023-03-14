@@ -7,7 +7,7 @@ signal added_to_hand(card, idx)
 signal removed_from_hand(card, idx)
 
 var deck := []
-var hand := [null, null, null, null, null] setget , get_hand
+var hand := [null, null, null, null, null]
 
 
 func get_hand() -> Array:
@@ -30,7 +30,7 @@ func add_card_to_deck(card: Card):
 func remove_card(card: Card):
 	var deck_idx = deck.find(card)
 	if deck_idx != -1:
-		deck.remove(deck_idx)
+		deck.remove_at(deck_idx)
 		emit_signal("removed_from_deck", card, deck_idx)
 
 
@@ -53,7 +53,7 @@ func pick_card(card: Card, hand_idx: int):
 	if hand_idx < hand.size() and hand_idx >= 0:
 		var deck_idx = deck.find(card)
 		if deck_idx != -1:
-			deck.remove(deck_idx)
+			deck.remove_at(deck_idx)
 			hand[hand_idx] = card
 			emit_signal("added_to_hand", card, hand_idx)
 			emit_signal("removed_from_deck", card, deck_idx)

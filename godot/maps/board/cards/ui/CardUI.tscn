@@ -1,50 +1,44 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bsx1u3ua2w53k"]
 
-[ext_resource path="res://maps/board/cards/ui/CardUI.gd" type="Script" id=1]
-[ext_resource path="res://resources/ui_themes/cards/Card.tres" type="Theme" id=2]
-[ext_resource path="res://assets/cards/card.jpeg" type="Texture" id=3]
+[ext_resource type="Script" path="res://maps/board/cards/ui/CardUI.gd" id="1"]
+[ext_resource type="Theme" uid="uid://dgubg8bjg3ovb" path="res://resources/ui_themes/cards/Card.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://d0mscq5k6pjlw" path="res://assets/cards/card.jpeg" id="3"]
 
 [node name="CardUI" type="TextureRect"]
+anchors_preset = -1
 anchor_right = 0.100586
 anchor_bottom = 0.246667
-theme = ExtResource( 2 )
-texture = ExtResource( 3 )
-expand = true
+theme = ExtResource("2")
+texture = ExtResource("3")
+expand_mode = 1
 stretch_mode = 5
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
+script = ExtResource("1")
 
 [node name="Title" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 0.237179
 anchor_top = 0.382883
 anchor_right = 0.807692
 anchor_bottom = 0.459459
+theme_override_font_sizes/font_size = 10
 text = "Teste"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": true
-}
+horizontal_alignment = 1
 
 [node name="Description" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 0.115385
 anchor_top = 0.490991
 anchor_right = 0.865385
 anchor_bottom = 0.887387
+theme_override_font_sizes/font_size = 11
 text = "Sou vasco da gama tantas vezes campeão!"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": true
-}
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Indication" type="ColorRect" parent="."]
+layout_mode = 0
 anchor_left = 0.410405
 anchor_top = 0.162162
 anchor_right = 0.589596
 anchor_bottom = 0.288288
-color = Color( 1, 1, 1, 0 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
+color = Color(1, 1, 1, 0)

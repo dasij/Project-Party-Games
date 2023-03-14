@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://daxpv2fp785mf"]
 
-[ext_resource path="res://maps/board/tile/Tile.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://maps/board/tile/Tile.gd" id="2"]
 
 [node name="Tile" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Arrows" type="Node2D" parent="."]

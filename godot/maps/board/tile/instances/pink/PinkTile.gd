@@ -1,9 +1,9 @@
-tool
+@tool
 extends Tile
 
 
 func effect(board, player):
-	yield(player.animate_scale(), "completed")
+	await player.animate_scale()
 	TileEvent.emit_signal("record", "Pink tile: %s move one tile" % player.nick)
-	yield(player.move(), "completed")
-	yield(player.actual_tile.play_effect(board, player), "completed")
+	await player.move()
+	await player.actual_tile.play_effect(board, player)

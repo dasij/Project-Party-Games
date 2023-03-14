@@ -1,104 +1,72 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://b2brro8euj2k4"]
 
-[ext_resource path="res://maps/board/cards/ui/planning/slots/CardSlotUI.tscn" type="PackedScene" id=1]
-[ext_resource path="res://maps/board/cards/ui/planning/PlanningUI.gd" type="Script" id=2]
-[ext_resource path="res://maps/board/cards/ui/cards/Cards.tscn" type="PackedScene" id=3]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 0, 0, 0.156863 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[ext_resource type="PackedScene" uid="uid://b53q14vcejmfx" path="res://maps/board/cards/ui/planning/slots/CardSlotUI.tscn" id="1"]
+[ext_resource type="Script" path="res://maps/board/cards/ui/planning/PlanningUI.gd" id="2"]
+[ext_resource type="PackedScene" path="res://maps/board/cards/ui/cards/Cards.tscn" id="3"]
 
 [node name="PlanningUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2")
 
-[node name="Cards" parent="." instance=ExtResource( 3 )]
+[node name="Cards" parent="." instance=ExtResource("3")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 0.0
+offset_right = 0.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Turn" type="PanelContainer" parent="."]
+layout_mode = 0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 226.0
-margin_top = -70.0
-margin_right = -226.0
-margin_bottom = 70.0
-custom_styles/panel = SubResource( 1 )
+offset_left = 226.0
+offset_top = -70.0
+offset_right = -226.0
+offset_bottom = 70.0
 
 [node name="Control" type="HBoxContainer" parent="Turn"]
-margin_right = 572.0
-margin_bottom = 140.0
-custom_constants/separation = 20
+layout_mode = 2
 alignment = 1
 
 [node name="Slots" type="HBoxContainer" parent="Turn/Control"]
-margin_left = 27.0
-margin_right = 487.0
-margin_bottom = 140.0
-custom_constants/separation = 20
+layout_mode = 2
 alignment = 1
 
-[node name="CardSlotUI" parent="Turn/Control/Slots" instance=ExtResource( 1 )]
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 8.0
-margin_right = 76.0
-margin_bottom = 132.0
+[node name="CardSlotUI" parent="Turn/Control/Slots" instance=ExtResource("1")]
+layout_mode = 2
 size_flags_vertical = 4
 
-[node name="CardSlotUI2" parent="Turn/Control/Slots" instance=ExtResource( 1 )]
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 96.0
-margin_top = 8.0
-margin_right = 172.0
-margin_bottom = 132.0
+[node name="CardSlotUI2" parent="Turn/Control/Slots" instance=ExtResource("1")]
+layout_mode = 2
 size_flags_vertical = 4
 number = 1
 
-[node name="CardSlotUI3" parent="Turn/Control/Slots" instance=ExtResource( 1 )]
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 192.0
-margin_top = 8.0
-margin_right = 268.0
-margin_bottom = 132.0
+[node name="CardSlotUI3" parent="Turn/Control/Slots" instance=ExtResource("1")]
+layout_mode = 2
 size_flags_vertical = 4
 number = 2
 
-[node name="CardSlotUI4" parent="Turn/Control/Slots" instance=ExtResource( 1 )]
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 288.0
-margin_top = 8.0
-margin_right = 364.0
-margin_bottom = 132.0
+[node name="CardSlotUI4" parent="Turn/Control/Slots" instance=ExtResource("1")]
+layout_mode = 2
 size_flags_vertical = 4
 number = 3
 
-[node name="CardSlotUI5" parent="Turn/Control/Slots" instance=ExtResource( 1 )]
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 384.0
-margin_top = 8.0
-margin_right = 460.0
-margin_bottom = 132.0
+[node name="CardSlotUI5" parent="Turn/Control/Slots" instance=ExtResource("1")]
+layout_mode = 2
 size_flags_vertical = 4
 number = 4
 
 [node name="PlayButton" type="Button" parent="Turn/Control"]
-margin_left = 507.0
-margin_top = 60.0
-margin_right = 545.0
-margin_bottom = 80.0
+layout_mode = 2
 size_flags_vertical = 4
 disabled = true
 text = "Play"

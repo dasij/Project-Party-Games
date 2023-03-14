@@ -1,15 +1,15 @@
 extends Control
 
-onready var Cards := $Cards
+@onready var Cards := $Cards
 
-var deck = null setget set_deck
+var deck = null : set = set_deck
 
 
 func set_deck(new_deck):
 	Cards.reset()
 	if new_deck != null:
 		if Cards != null:
-			Cards.add_cards_to_ui(new_deck.hand, false)
+			Cards.add_cards_to_ui(new_deck.get_hand(), false)
 	deck = new_deck
 
 

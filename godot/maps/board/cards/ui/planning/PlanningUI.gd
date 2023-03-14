@@ -2,20 +2,26 @@ extends Control
 
 signal pressed_play
 
-onready var Slots := $Turn/Control/Slots
-onready var Cards := $Cards
-onready var PlayButton := $Turn/Control/PlayButton
+@onready var Slots := $Turn/Control/Slots
+@onready var Cards := $Cards
+@onready var PlayButton := $Turn/Control/PlayButton
 
-var deck = null setget set_deck
+var deck = null : set = set_deck
 
 
 func set_deck(new_deck):
 	reset()
+	if new_deck == null and deck != null:
+		# TODO: better way to do this?
+		deck.disconnect("added_to_deck",Callable(self,"_on_Deck_added_to_deck"))
+		deck.disconnect("removed_from_deck",Callable(self,"_on_Deck_removed_from_deck"))
+		deck.disconnect("added_to_hand",Callable(self,"_on_Deck_added_to_hand"))
+		deck.disconnect("removed_from_hand",Callable(self,"_on_Deck_removed_from_hand"))
 	if new_deck != null:
-		new_deck.connect("added_to_deck", self, "_on_Deck_added_to_deck")
-		new_deck.connect("removed_from_deck", self, "_on_Deck_removed_from_deck")
-		new_deck.connect("added_to_hand", self, "_on_Deck_added_to_hand")
-		new_deck.connect("removed_from_hand", self, "_on_Deck_removed_from_hand")
+		new_deck.connect("added_to_deck",Callable(self,"_on_Deck_added_to_deck"))
+		new_deck.connect("removed_from_deck",Callable(self,"_on_Deck_removed_from_deck"))
+		new_deck.connect("added_to_hand",Callable(self,"_on_Deck_added_to_hand"))
+		new_deck.connect("removed_from_hand",Callable(self,"_on_Deck_removed_from_hand"))
 		if Cards != null:
 			Cards.add_cards_to_ui(new_deck.deck)
 	deck = new_deck
@@ -31,24 +37,14 @@ func reset():
 	for slot in Slots.get_children():
 		slot.reset()
 
-	# if there is a deck remove all its connections and put him as null
-	if deck != null:
-		deck = deck as Deck
-		# TODO: better way to do this?
-		deck.disconnect("added_to_deck", self, "_on_Deck_added_to_deck")
-		deck.disconnect("removed_from_deck", self, "_on_Deck_removed_from_deck")
-		deck.disconnect("added_to_hand", self, "_on_Deck_added_to_hand")
-		deck.disconnect("removed_from_hand", self, "_on_Deck_removed_from_hand")
-		deck = null
-
 
 func _ready():
-	PlayButton.connect("pressed", self, "_on_Play_pressed")
+	PlayButton.connect("pressed",Callable(self,"_on_Play_pressed"))
 	for slot in Slots.get_children():
-		slot.connect("removed_card", self, "_on_Slot_removed_card")
-		slot.connect("added_card", self, "_on_Slot_added_card")
-		slot.connect("changed_order", self, "_on_Slot_changed_order")
-		slot.connect("changed_card", self, "_on_Slot_changed_card")
+		slot.connect("removed_card",Callable(self,"_on_Slot_removed_card"))
+		slot.connect("added_card",Callable(self,"_on_Slot_added_card"))
+		slot.connect("changed_order",Callable(self,"_on_Slot_changed_order"))
+		slot.connect("changed_card",Callable(self,"_on_Slot_changed_card"))
 
 
 func _on_Slot_removed_card(_card, hand_idx: int):
@@ -81,9 +77,9 @@ func _on_Deck_removed_from_deck(_card: Card, idx: int):
 
 
 func _on_Deck_added_to_hand(_card: Card, _idx: int):
-	PlayButton.set_disabled(false)
+	PlayButton.disabled = false
 
 
 func _on_Deck_removed_from_hand(_card: Card, _idx: int):
-	if deck.hand.size() == 0:
-		PlayButton.set_disabled(true)
+	if deck.get_hand().size() == 0:
+		PlayButton.disabled = true

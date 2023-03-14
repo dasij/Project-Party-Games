@@ -7,7 +7,7 @@ var already_destroyed: bool = false
 
 var direction: Vector2 = Vector2.ZERO
 
-export(int) var move_speed
+@export var move_speed: int
 
 func _process(delta) -> void:
 	translate(direction * move_speed * delta)

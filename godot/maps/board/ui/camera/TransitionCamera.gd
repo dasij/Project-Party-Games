@@ -1,13 +1,13 @@
 extends RigidBody2D
 
-onready var TransitionCamera := $TransitionCamera
-onready var TweenCamera := $Tween
+@export var speed := 700
 
-export var speed := 700
+@onready var TransitionCamera := $TransitionCamera
 
 
 func transition_to(active_node: Node2D, next_node: Node2D) -> void:
 	if TransitionCamera != null:
+		var tweener := create_tween().set_trans(Tween.TRANS_SINE)
 		var from_position = active_node.position
 		var from_zoom = active_node.get_camera().zoom
 		var next_camera = next_node.get_camera()
@@ -18,30 +18,17 @@ func transition_to(active_node: Node2D, next_node: Node2D) -> void:
 		var duration = (from_position.distance_to(next_node.position)) / speed
 
 		TransitionCamera.make_current()
-		TweenCamera.follow_property(
-			self,
-			"position",
-			from_position,
-			next_node,
-			"position",
-			duration,
-			Tween.TRANS_CUBIC,
-			Tween.EASE_IN_OUT
+		tweener.tween_method(
+			func(t): self.position = from_position.lerp(next_node.position, t),
+			0.0,
+			1.0,
+			duration
 		)
-		TweenCamera.follow_property(
-			TransitionCamera,
-			"zoom",
-			from_zoom,
-			next_camera,
-			"zoom",
-			duration,
-			Tween.TRANS_CUBIC,
-			Tween.EASE_IN_OUT
+		tweener.parallel().tween_method(
+			func(t): TransitionCamera.zoom = from_zoom.lerp(next_camera.zoom, t),
+			0.0,
+			1.0,
+			duration
 		)
-		TweenCamera.start()
-		yield(TweenCamera, "tween_completed")
+		await tweener.finished
 		next_node.get_camera().make_current()
-
-
-func set_position(new_pos: Vector2) -> void:
-	self.position = new_pos
