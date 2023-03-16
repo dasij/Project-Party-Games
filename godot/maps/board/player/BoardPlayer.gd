@@ -54,10 +54,11 @@ func move() -> void:
 
 
 func move_to_tile(new_tile: Tile) -> void:
-	var new_position = new_tile.position
-	var old_position = actual_tile.position
-
 	var path = self.graph.get_path_node(actual_tile, new_tile) as Path2D
+	if path == null:
+		await teleport_to_tile(new_tile)
+		return
+	
 	var curve = path.curve.tessellate()
 
 	for point in curve:
@@ -69,6 +70,13 @@ func move_to_tile(new_tile: Tile) -> void:
 		)
 		await tweener.finished
 	set_actual_tile(new_tile)
+
+
+func teleport_to_tile(new_tile: Tile) -> void:
+	await animate_scale_down()
+	self.position = new_tile.position
+	self.actual_tile = new_tile
+	await animate_restore()
 
 
 func play_pre_turn(board: Board) -> void:
@@ -87,10 +95,7 @@ func play_turn(board: Board) -> void:
 func die() -> void:
 	self.dead = true
 	var nearest_graveyard = self.graph.bfs(actual_tile, func(node): return Tile.is_graveyard(node))
-	await animate_dead()
-	self.position = nearest_graveyard.position
-	self.actual_tile = nearest_graveyard
-	await animate_restore()
+	await teleport_to_tile(nearest_graveyard)
 
 
 func restore() -> void:
@@ -104,7 +109,7 @@ func _input(event: InputEvent) -> void:
 		emit_signal("do_action")
 
 
-func animate_dead() -> void:
+func animate_scale_down() -> void:
 	var tweener = create_tween()
 	tweener.tween_property(self, "scale", Vector2.ZERO, 0.5)
 	await tweener.finished

@@ -1,6 +1,6 @@
 extends Node
 
-var cards = [Dice, SubPoint, Suicide]
+var cards = [Dice] #, SubPoint, Suicide]
 
 
 func get_random_card():

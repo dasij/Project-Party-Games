@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://sw4kkb6awdpd"]
+[gd_scene load_steps=48 format=3 uid="uid://sw4kkb6awdpd"]
 
 [ext_resource type="Script" path="res://maps/board/Board.gd" id="1"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/instances/pink/PinkTile.tscn" id="2"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://maps/board/graph/Graph.gd" id="22"]
 [ext_resource type="Script" path="res://maps/board/graph/Paths.gd" id="23"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/path/Path.tscn" id="25"]
+[ext_resource type="PackedScene" uid="uid://c8yka42x2jt3" path="res://maps/board/tile/instances/portal/Portal.tscn" id="26_mcqvf"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/arrow/Arrow.tscn" id="29"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tkn0c"]
@@ -129,18 +130,6 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="2"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 444, 198, 0, 0, 0, 0, 389, 226, 0, 0, 0, 0, 479, 272)
-}
-point_count = 3
-
-[sub_resource type="Curve2D" id="3"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 479, 272, 0, 0, 0, 0, 516, 293, 0, 0, 0, 0, 603, 247, 0, 0, 0, 0, 657, 278)
-}
-point_count = 4
-
 [sub_resource type="Curve2D" id="4"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 554, 223, 0, 0, 0, 0, 657, 278)
@@ -171,18 +160,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="10"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 657, 278, 0, 0, 0, 0, 898, 401)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="11"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 898, 401, 0, 0, 0, 0, 819, 450, 0, 0, 0, 0, 946, 514)
-}
-point_count = 3
-
 [sub_resource type="Curve2D" id="12"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 946, 514, 0, 0, 0, 0, 861, 559, 0, 0, 0, 0, 735, 491)
@@ -201,15 +178,9 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="Curve2D" id="15"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 467, 493, 0, 0, 0, 0, 429, 513, 0, 0, 0, 0, 189, 390)
-}
-point_count = 3
-
 [sub_resource type="Curve2D" id="16"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 189, 390, 0, 0, 0, 0, 43, 316, 0, 0, 0, 0, 130, 268)
+"points": PackedVector2Array(0, 0, 0, 0, 129, 360, 0, 0, 0, 0, 43, 316, 0, 0, 0, 0, 130, 268)
 }
 point_count = 3
 
@@ -234,6 +205,42 @@ point_count = 4
 [sub_resource type="Curve2D" id="21"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 772, 251, 0, 0, 0, 0, 690, 296, 0, 0, 0, 0, 657, 278)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_twj53"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 444, 198, 0, 0, 0, 0, 390, 232, 0, 0, 0, 0, 463, 269)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_solem"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 463, 269, 0, 0, 0, 0, 514, 298, 0, 0, 0, 0, 602, 249, 0, 0, 0, 0, 657, 278)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_gs3lm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 657, 278, 0, 0, 0, 0, 899, 406)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_nb6n0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 899, 406, 0, 0, 0, 0, 820, 448, 0, 0, 0, 0, 946, 514)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_3riih"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 253, 425, 0, 0, 0, 0, 129, 360)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_bc828"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 467, 493, 0, 0, 0, 0, 429, 517, 0, 0, 0, 0, 253, 425)
 }
 point_count = 3
 
@@ -311,12 +318,6 @@ script = ExtResource("23")
 [node name="Tile2-Tile5" parent="Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("1")
 
-[node name="Tile5-Tile14" parent="Graph/Paths" instance=ExtResource("25")]
-curve = SubResource("2")
-
-[node name="Tile14-Tile9" parent="Graph/Paths" instance=ExtResource("25")]
-curve = SubResource("3")
-
 [node name="Tile3-Tile9" parent="Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("4")
 
@@ -332,12 +333,6 @@ curve = SubResource("8")
 [node name="Tile-Tile2" parent="Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("9")
 
-[node name="Tile9-Tile10" parent="Graph/Paths" instance=ExtResource("25")]
-curve = SubResource("10")
-
-[node name="Tile10-Tile11" parent="Graph/Paths" instance=ExtResource("25")]
-curve = SubResource("11")
-
 [node name="Tile11-Tile12" parent="Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("12")
 
@@ -346,9 +341,6 @@ curve = SubResource("13")
 
 [node name="Tile6-Tile4" parent="Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("14")
-
-[node name="Tile4-Tile7" parent="Graph/Paths" instance=ExtResource("25")]
-curve = SubResource("15")
 
 [node name="Tile7-Tile8" parent="Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("16")
@@ -365,8 +357,30 @@ curve = SubResource("20")
 [node name="Tile16-Tile9" parent="Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("21")
 
+[node name="Tile5-Tile14" parent="Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_twj53")
+
+[node name="Tile14-Tile9" parent="Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_solem")
+
+[node name="Tile9-Tile10" parent="Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_gs3lm")
+
+[node name="Tile10-Tile11" parent="Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_nb6n0")
+
+[node name="Tile17-Tile7" parent="Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_3riih")
+
+[node name="Tile4-Tile17" parent="Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_bc828")
+
 [node name="Tiles" type="Node2D" parent="Graph"]
 script = ExtResource("5")
+
+[node name="Tile17" parent="Graph/Tiles" instance=ExtResource("26_mcqvf")]
+position = Vector2(253, 425)
+next_tiles_path = [NodePath("../Tile7")]
 
 [node name="Start" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(259, 164)
@@ -377,22 +391,14 @@ position = Vector2(295, 187)
 next_tiles_path = [NodePath("../Tile2")]
 
 [node name="Tile7" parent="Graph/Tiles" instance=ExtResource("14")]
-position = Vector2(189, 390)
+position = Vector2(129, 360)
 next_tiles_path = [NodePath("../Tile8")]
 
 [node name="Tile5" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(444, 198)
 next_tiles_path = [NodePath("../Tile14"), NodePath("../Tile3"), NodePath("../Tile13")]
-metadata/_edit_group_ = true
 
-[node name="Tile14" parent="Graph/Tiles/Tile5/Arrows" index="0" instance=ExtResource("29")]
-offset_left = -54.0
-offset_top = 16.0
-offset_right = 10.0
-offset_bottom = 39.0
-rotation = 31.9115
-
-[node name="Tile3" parent="Graph/Tiles/Tile5/Arrows" index="1" instance=ExtResource("29")]
+[node name="Tile3" parent="Graph/Tiles/Tile5/Arrows" index="0" instance=ExtResource("29")]
 offset_left = 33.0
 offset_top = -28.0
 offset_right = 97.0
@@ -400,13 +406,20 @@ offset_bottom = -5.0
 rotation = 25.6873
 to_tile_idx = 1
 
-[node name="Tile13" parent="Graph/Tiles/Tile5/Arrows" index="2" instance=ExtResource("29")]
+[node name="Tile13" parent="Graph/Tiles/Tile5/Arrows" index="1" instance=ExtResource("29")]
 offset_left = 115.0
 offset_top = -69.0
 offset_right = 179.0
 offset_bottom = -46.0
 rotation = 25.6008
 to_tile_idx = 2
+
+[node name="Tile14" parent="Graph/Tiles/Tile5/Arrows" index="2" instance=ExtResource("29")]
+offset_left = -53.0
+offset_top = 21.0
+offset_right = 11.0
+offset_bottom = 44.0
+rotation = 0.544896
 
 [node name="Tile9" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(657, 278)
@@ -438,19 +451,11 @@ next_tiles_path = [NodePath("../Tile12")]
 
 [node name="Tile4" parent="Graph/Tiles" instance=ExtResource("16")]
 position = Vector2(467, 493)
-next_tiles_path = [NodePath("../Tile7")]
-
-[node name="Tile10" parent="Graph/Tiles" instance=ExtResource("16")]
-position = Vector2(898, 401)
-next_tiles_path = [NodePath("../Tile11")]
+next_tiles_path = [NodePath("../Tile17")]
 
 [node name="Tile13" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(640, 179)
 next_tiles_path = [NodePath("../Tile9"), NodePath("")]
-
-[node name="Tile14" parent="Graph/Tiles" instance=ExtResource("16")]
-position = Vector2(479, 272)
-next_tiles_path = [NodePath("../Tile9")]
 
 [node name="Tile15" parent="Graph/Tiles" instance=ExtResource("6")]
 position = Vector2(691, 600)
@@ -459,6 +464,14 @@ next_tiles_path = [NodePath("../Tile12"), NodePath("")]
 [node name="Tile16" parent="Graph/Tiles" instance=ExtResource("6")]
 position = Vector2(772, 251)
 next_tiles_path = [NodePath("../Tile9")]
+
+[node name="Tile14" parent="Graph/Tiles" instance=ExtResource("26_mcqvf")]
+position = Vector2(463, 269)
+next_tiles_path = [NodePath("../Tile9")]
+
+[node name="Tile10" parent="Graph/Tiles" instance=ExtResource("26_mcqvf")]
+position = Vector2(899, 406)
+next_tiles_path = [NodePath("../Tile11")]
 
 [node name="Players" type="Node2D" parent="."]
 
