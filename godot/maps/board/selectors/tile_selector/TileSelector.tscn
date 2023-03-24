@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl1rgrhxh48kd"]
+
+[ext_resource type="Script" path="res://maps/board/selectors/tile_selector/TileSelector.gd" id="1_3oe8g"]
+[ext_resource type="Script" path="res://maps/board/components/TopDownMovement.gd" id="1_24s4t"]
+[ext_resource type="PackedScene" uid="uid://d3hqn4uki8swo" path="res://maps/board/camera/BaseCamera.tscn" id="2_cyki6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dg1e0"]
+radius = 15.0
+
+[node name="TileSelector" type="CharacterBody2D"]
+script = ExtResource("1_3oe8g")
+
+[node name="BaseCamera" parent="." instance=ExtResource("2_cyki6")]
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dg1e0")
+
+[node name="TopDownMovement" type="Node" parent="."]
+script = ExtResource("1_24s4t")
+node_path = NodePath("..")
+speed = 300.0

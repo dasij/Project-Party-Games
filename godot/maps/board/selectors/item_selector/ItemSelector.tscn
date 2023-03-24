@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5bww8ravsk7g"]
+
+[ext_resource type="Script" path="res://maps/board/selectors/item_selector/ItemSelector.gd" id="1_d2q8n"]
+
+[node name="ItemSelector" type="Node"]
+script = ExtResource("1_d2q8n")

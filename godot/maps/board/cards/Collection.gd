@@ -1,7 +1,6 @@
 extends Node
 
-var cards = [Dice, SubPoint, Suicide]
-
+var cards = [Swap, TeleportToTile, Teleport, WhereAmI, Dice, SubPoint, Suicide]
 
 func get_random_card():
 	var cards_size = self.cards.size()

@@ -1,7 +1,6 @@
 @tool
 extends Tile
 
-
 func pre_turn_effect(board, player):
 	# restores player
 	await player.restore()
@@ -14,3 +13,4 @@ func pre_turn_effect(board, player):
 func _init():
 	super._init()
 	self.tile_type = TILE_TYPE.GRAVEYARD
+	self.teleportable = false

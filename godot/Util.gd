@@ -8,6 +8,9 @@ class_name Util
 static func randi_from_range(initial: int, final: int) -> int:
 	return (randi() % (final - initial + 1)) + initial
 
+static func array_get_random(array: Array) -> Variant:
+	var idx = randi() % array.size()
+	return array[idx]
 
 static func array_get(array: Array, idx: int):
 	if idx < array.size():

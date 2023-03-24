@@ -1,60 +1,37 @@
 extends CharacterBody2D
 
-@onready var GlobalCamera := $Camera as Camera2D
-
-@export var speed: float = 500
-@export var zoom_speed: float = 0.01
-@export var zoom_min: float = 1
-@export var zoom_max: float = 4
-
+@onready var _camera := $Camera as Camera2D
+@onready var _zoom := $ZoomController as ZoomController
+@onready var _movement := $Movement as TopDownMovement
 
 func activate() -> void:
-	self.set_process(true)
+	_movement.activate()
+	_zoom.activate()
 
 
 func deactivate() -> void:
-	self.set_process(false)
+	_movement.deactivate()
+	_zoom.deactivate()
 
 
 func get_camera():
-	return GlobalCamera
+	return _camera
 
 
 func get_input() -> void:
-	var viewport_size := get_viewport_rect().size / 2
-
-	velocity = Vector2.ZERO
-	if Input.is_action_pressed("ui_right"):
-		if position.x + viewport_size.x / GlobalCamera.zoom.x < GlobalCamera.limit_right:
-			velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		if position.x - viewport_size.x / GlobalCamera.zoom.x > GlobalCamera.limit_left:
-			velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		if position.y + viewport_size.y / GlobalCamera.zoom.y < GlobalCamera.limit_bottom:
-			velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		if position.y - viewport_size.y / GlobalCamera.zoom.y > GlobalCamera.limit_top:
-			velocity.y -= 1
 	if Input.is_action_pressed("zoom_in"):
-		var zoom := GlobalCamera.zoom.x
-		var new_zoom := min(zoom_max, zoom + zoom_speed) as float
-		GlobalCamera.zoom = Vector2(new_zoom, new_zoom)
-		position = GlobalCamera.get_screen_center_position()
+		position = _camera.get_screen_center_position()
 	if Input.is_action_pressed("zoom_out"):
-		var zoom := GlobalCamera.zoom.x
-		var new_zoom := max(zoom_min, zoom - zoom_speed) as float
-		GlobalCamera.zoom = Vector2(new_zoom, new_zoom)
-		position = GlobalCamera.get_screen_center_position()
-	velocity = velocity.normalized() * speed
+		position = _camera.get_screen_center_position()
 
 
-func _process(delta):
+func _process(_delta):
 	get_input()
-	set_velocity(velocity)
-	move_and_slide()
-	velocity = velocity
 
 
 func _ready():
-	GlobalCamera.align()
+	var viewport_size := get_viewport_rect().size / 2
+	_movement.limit_right = _camera.limit_right - viewport_size.x / _camera.zoom.x
+	_movement.limit_left = _camera.limit_left + viewport_size.x / _camera.zoom.x
+	_movement.limit_bottom = _camera.limit_bottom - viewport_size.y / _camera.zoom.y
+	_movement.limit_top = _camera.limit_top + viewport_size.y / _camera.zoom.y

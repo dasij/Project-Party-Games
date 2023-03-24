@@ -22,6 +22,8 @@ BoardEvent="*res://maps/board/events/BoardEvent.gd"
 TileEvent="*res://maps/board/events/TileEvent.gd"
 CameraEvent="*res://maps/board/events/CameraEvent.gd"
 CardsCollection="*res://maps/board/cards/Collection.gd"
+PortalController="*res://maps/board/global/PortalController.gd"
+TransitionEvent="*res://maps/board/events/TranstitionEvent.gd"
 
 [display]
 
