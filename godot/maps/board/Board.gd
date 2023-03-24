@@ -9,17 +9,24 @@ class_name Board
 @onready var PlanningUI := $UI/Screen/Phases/Planning
 @onready var PlayUI := $UI/Screen/Phases/Play
 @onready var DiscardUI := $UI/Screen/Phases/DiscardUI
-@onready var Graph := $Graph
+@onready var graph := $Graph
+@onready var players := _get_players()
 
 var state = {"actual_player": null}
 
 
-func setup_game(players: Array[Node]) -> void:
+func _get_players() -> Array[BoardPlayer]:
+	var result = [] as Array[BoardPlayer]
+	for node in $Players.get_children():
+		result.append(node as BoardPlayer)
+	return result
+
+
+func setup_game(players: Array[BoardPlayer]) -> void:
 	var start_tile = $Graph/Tiles/Start as Tile
 
 	var i := 0
 	for player in players:
-		player = player as BoardPlayer
 		var score_player_ui = preload("res://maps/board/player/score/ScorePlayerUI.tscn").instantiate().init(player)
 		score_player_ui.set_anchors_preset(Control.PRESET_FULL_RECT)
 		var placeholder = ScoreUI.get_child(i) as Control
@@ -28,9 +35,8 @@ func setup_game(players: Array[Node]) -> void:
 #		score_player_ui.connect()
 
 	for player in players:
-		player = player as BoardPlayer
 		player.actual_tile = start_tile
-		player.graph = Graph
+		player.graph = graph
 
 
 func transition_to_pre_turn(player: BoardPlayer) -> void:
@@ -84,11 +90,11 @@ func discard_phase(player: BoardPlayer) -> void:
 		DiscardUI.deck = null
 
 
-func game_round(players: Array[Node]) -> void:
+func game_round(players: Array[BoardPlayer]) -> void:
 	for player in players:
-		player = player as BoardPlayer
 		state.actual_player = player
 		BoardEvent.emit_signal("turn_started", player)
+		TransitionEvent.transition_to(player)
 		await transition_to_pre_turn(player)
 		await pre_turn(player)
 		await transition_to_turn(player)
@@ -99,9 +105,7 @@ func game_round(players: Array[Node]) -> void:
 
 
 func _ready():
-	var players := $Players.get_children() as Array[Node]
 	setup_game(players)
-
 	for round_i in max_round:
 		BoardEvent.emit_signal("round_started", round_i, max_round)
 		await game_round(players)

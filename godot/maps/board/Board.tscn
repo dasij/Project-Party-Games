@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://maps/board/CameraController.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://dd1wauqq5eidw" path="res://maps/board/player/BoardPlayer.tscn" id="4"]
 [ext_resource type="Script" path="res://maps/board/graph/Tiles.gd" id="5"]
-[ext_resource type="PackedScene" path="res://maps/board/tile/instances/graveyard/Graveyard.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://c0hyxe4mwyldk" path="res://maps/board/tile/instances/graveyard/Graveyard.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://maps/board/player/score/ScoreUI.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://b2brro8euj2k4" path="res://maps/board/cards/ui/planning/PlanningUI.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://cfsjrcf6k6v26" path="res://maps/board/cards/ui/play/PlayUI.tscn" id="9"]
@@ -381,22 +381,27 @@ script = ExtResource("5")
 [node name="Tile17" parent="Graph/Tiles" instance=ExtResource("26_mcqvf")]
 position = Vector2(253, 425)
 next_tiles_path = [NodePath("../Tile7")]
+teleportable = true
 
 [node name="Start" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(259, 164)
 next_tiles_path = [NodePath("../Tile")]
+teleportable = false
 
 [node name="Tile" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(295, 187)
 next_tiles_path = [NodePath("../Tile2")]
+teleportable = true
 
 [node name="Tile7" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(129, 360)
 next_tiles_path = [NodePath("../Tile8")]
+teleportable = true
 
 [node name="Tile5" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(444, 198)
 next_tiles_path = [NodePath("../Tile14"), NodePath("../Tile3"), NodePath("../Tile13")]
+teleportable = true
 
 [node name="Tile3" parent="Graph/Tiles/Tile5/Arrows" index="0" instance=ExtResource("29")]
 offset_left = 33.0
@@ -424,38 +429,47 @@ rotation = 0.544896
 [node name="Tile9" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(657, 278)
 next_tiles_path = [NodePath("../Tile10")]
+teleportable = true
 
 [node name="Tile2" parent="Graph/Tiles" instance=ExtResource("15")]
 position = Vector2(348, 161)
 next_tiles_path = [NodePath("../Tile5")]
+teleportable = true
 
 [node name="Tile12" parent="Graph/Tiles" instance=ExtResource("15")]
 position = Vector2(735, 491)
 next_tiles_path = [NodePath("../Tile6")]
+teleportable = true
 
 [node name="Tile8" parent="Graph/Tiles" instance=ExtResource("15")]
 position = Vector2(130, 268)
 next_tiles_path = [NodePath("../Tile")]
+teleportable = true
 
 [node name="Tile3" parent="Graph/Tiles" instance=ExtResource("2")]
 position = Vector2(554, 223)
 next_tiles_path = [NodePath("../Tile9")]
+teleportable = true
 
 [node name="Tile6" parent="Graph/Tiles" instance=ExtResource("2")]
 position = Vector2(602, 471)
 next_tiles_path = [NodePath("../Tile4")]
+teleportable = true
 
 [node name="Tile11" parent="Graph/Tiles" instance=ExtResource("2")]
 position = Vector2(946, 514)
 next_tiles_path = [NodePath("../Tile12")]
+teleportable = true
 
 [node name="Tile4" parent="Graph/Tiles" instance=ExtResource("16")]
 position = Vector2(467, 493)
 next_tiles_path = [NodePath("../Tile17")]
+teleportable = true
 
 [node name="Tile13" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(640, 179)
 next_tiles_path = [NodePath("../Tile9"), NodePath("")]
+teleportable = true
 
 [node name="Tile15" parent="Graph/Tiles" instance=ExtResource("6")]
 position = Vector2(691, 600)
@@ -464,14 +478,17 @@ next_tiles_path = [NodePath("../Tile12"), NodePath("")]
 [node name="Tile16" parent="Graph/Tiles" instance=ExtResource("6")]
 position = Vector2(772, 251)
 next_tiles_path = [NodePath("../Tile9")]
+teleportable = false
 
 [node name="Tile14" parent="Graph/Tiles" instance=ExtResource("26_mcqvf")]
 position = Vector2(463, 269)
 next_tiles_path = [NodePath("../Tile9")]
+teleportable = true
 
 [node name="Tile10" parent="Graph/Tiles" instance=ExtResource("26_mcqvf")]
 position = Vector2(899, 406)
 next_tiles_path = [NodePath("../Tile11")]
+teleportable = true
 
 [node name="Players" type="Node2D" parent="."]
 
@@ -481,6 +498,9 @@ nick = "Vasco"
 [node name="Player2" parent="Players" instance=ExtResource("4")]
 nick = "Gama"
 
+[node name="Player3" parent="Players" instance=ExtResource("4")]
+nick = "Name"
+
 [node name="CameraController" type="Node2D" parent="."]
 script = ExtResource("3")
 
@@ -488,5 +508,6 @@ script = ExtResource("3")
 position = Vector2(519, 233)
 
 [node name="TransitionCamera" parent="CameraController" instance=ExtResource("17")]
+visible = false
 
 [editable path="Graph/Tiles/Tile5"]

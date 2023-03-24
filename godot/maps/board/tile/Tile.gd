@@ -5,7 +5,7 @@ class_name Tile
 enum TILE_TYPE { NORMAL, GRAVEYARD }
 
 @export var next_tiles_path = [] : set = set_next_tiles_path # (Array, NodePath)
-@export var arrow_circle_radius := 40.0
+@export var teleportable := true
 
 var next_tiles: Array[Tile] = []
 var prev_tiles: Array[Tile] = []

@@ -7,6 +7,10 @@ var undirected_graph = {}
 @onready var tiles = $Tiles
 
 
+func get_tiles() -> Array:
+	return undirected_graph.keys() as Array
+
+
 func add_undirected_edge(from_tile: Tile, to_tile: Tile) -> void:
 	add_directed_edge(from_tile, to_tile)
 	add_directed_edge(to_tile, from_tile)

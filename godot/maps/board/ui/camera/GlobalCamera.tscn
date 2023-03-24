@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbeaacv6pv0dp"]
+[gd_scene load_steps=6 format=3 uid="uid://dbeaacv6pv0dp"]
 
 [ext_resource type="Script" path="res://maps/board/ui/camera/GlobalCamera.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://d3hqn4uki8swo" path="res://maps/board/camera/BaseCamera.tscn" id="2"]
+[ext_resource type="Script" path="res://maps/board/components/TopDownMovement.gd" id="3_7g0fi"]
+[ext_resource type="Script" path="res://maps/board/components/ZoomController.gd" id="4_ff1t7"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(0, 0)
@@ -13,3 +15,11 @@ script = ExtResource("1")
 shape = SubResource("1")
 
 [node name="Camera" parent="." instance=ExtResource("2")]
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("3_7g0fi")
+node_path = NodePath("..")
+
+[node name="ZoomController" type="Node" parent="."]
+script = ExtResource("4_ff1t7")
+camera_path = NodePath("../Camera")
