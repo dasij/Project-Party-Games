@@ -13,7 +13,11 @@ func get_camera():
 func _input(event):
 	if event.is_action_pressed("confirm"):
 		var areas := _area_selection.get_overlapping_areas()
+		if areas.is_empty():
+			return
 		var tile = areas[0].get_parent() as Tile
+		if not tile.teleportable:
+			return
 		emit_signal("tile_selected", tile)
 		BoardEvent.emit_signal("finished_selection")
 

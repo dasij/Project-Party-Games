@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" path="res://maps/board/ui/log/Log.tscn" id="13"]
 [ext_resource type="PackedScene" uid="uid://bfpa1dxf8inp0" path="res://maps/board/tile/instances/blue/BlueTile.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://maps/board/tile/instances/red/RedTile.tscn" id="15"]
-[ext_resource type="PackedScene" path="res://maps/board/tile/instances/black/BlackTile.tscn" id="16"]
+[ext_resource type="PackedScene" uid="uid://boh2nwoi6l6b2" path="res://maps/board/tile/instances/black/BlackTile.tscn" id="16"]
 [ext_resource type="PackedScene" uid="uid://dxkmenf7va4sb" path="res://maps/board/ui/camera/TransitionCamera.tscn" id="17"]
 [ext_resource type="Script" path="res://maps/board/Phases.gd" id="18"]
 [ext_resource type="PackedScene" path="res://maps/board/ui/round/Round.tscn" id="19"]
@@ -464,7 +464,6 @@ teleportable = true
 [node name="Tile4" parent="Graph/Tiles" instance=ExtResource("16")]
 position = Vector2(467, 493)
 next_tiles_path = [NodePath("../Tile17")]
-teleportable = true
 
 [node name="Tile13" parent="Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(640, 179)
