@@ -1,15 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://boh2nwoi6l6b2"]
 
-[ext_resource path="res://maps/board/tile/Tile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://maps/board/tile/instances/black/BlackTile.gd" type="Script" id=2]
-[ext_resource path="res://assets/tiles/icon_black.png" type="Texture2D" id=3]
+[ext_resource type="PackedScene" uid="uid://daxpv2fp785mf" path="res://maps/board/tile/Tile.tscn" id="1"]
+[ext_resource type="Script" path="res://maps/board/tile/instances/black/BlackTile.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cgovpk5yhh51f" path="res://assets/tiles/icon_black.png" id="3"]
 
-[node name="Tile" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="Tile" instance=ExtResource("1")]
+script = ExtResource("2")
+teleportable = true
 
-[node name="Sprite2D" parent="." index="0"]
-scale = Vector2( 0.28125, 0.28125 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("3")
