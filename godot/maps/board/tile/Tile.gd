@@ -1,10 +1,10 @@
 @tool
-extends Node2D
 class_name Tile
+extends Node2D
 
 enum TILE_TYPE { NORMAL, GRAVEYARD }
 
-@export var next_tiles_path = [] : set = set_next_tiles_path # (Array, NodePath)
+@export var next_tiles_path: Array[NodePath] = [] : set = set_next_tiles_path # (Array, NodePath)
 @export var teleportable := true
 
 var next_tiles: Array[Tile] = []
