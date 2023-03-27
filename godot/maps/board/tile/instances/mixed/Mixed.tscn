@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpyxo2iugbxnc"]
+
+[ext_resource type="PackedScene" uid="uid://daxpv2fp785mf" path="res://maps/board/tile/Tile.tscn" id="1_ym6e3"]
+[ext_resource type="Script" path="res://maps/board/tile/instances/mixed/Mixed.gd" id="2_ef8qm"]
+[ext_resource type="Texture2D" uid="uid://g257sypg6upd" path="res://assets/tiles/icon_mixed.png" id="3_6ekvd"]
+
+[node name="Tile" instance=ExtResource("1_ym6e3")]
+script = ExtResource("2_ef8qm")
+tiles = Array[GDScript]([])
+chances = Array[GDScript]([])
+teleportable = true
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("3_6ekvd")
