@@ -21,7 +21,7 @@ func init(items) -> ItemSelector:
 	return self
 
 
-func _unhandled_input(event):
+func _input(event):
 	if event.is_action_pressed("ui_up"):
 		_selected_index += 1
 	elif event.is_action_pressed("ui_down"):
