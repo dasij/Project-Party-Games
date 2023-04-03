@@ -4,6 +4,6 @@
 zoom = Vector2(2, 2)
 limit_left = -100
 limit_top = -150
-limit_right = 1150
-limit_bottom = 700
+limit_right = 1750
+limit_bottom = 1100
 editor_draw_limits = true

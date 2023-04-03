@@ -49,6 +49,8 @@ func pre_turn(player: BoardPlayer) -> void:
 	give_player_random_card(player)
 	give_player_random_card(player)
 	give_player_random_card(player)
+	give_player_random_card(player)
+	give_player_random_card(player)
 	await player.play_pre_turn(self)
 	await planning_phase(player)
 	pass

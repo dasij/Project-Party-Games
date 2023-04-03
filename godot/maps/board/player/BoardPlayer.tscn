@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dd1wauqq5eidw"]
 
 [ext_resource type="Script" path="res://maps/board/player/BoardPlayer.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://lyyehvaxeugn" path="res://assets/chars/char.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://ht86w66wow0d" path="res://assets/chars/char2.png" id="2_18c8p"]
 [ext_resource type="PackedScene" uid="uid://d3hqn4uki8swo" path="res://maps/board/camera/BaseCamera.tscn" id="3"]
 
 [node name="BoardPlayer" type="Node2D"]
@@ -18,8 +18,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Char" type="Sprite2D" parent="."]
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("2")
+visibility_layer = 16
+position = Vector2(0, -25)
+texture = ExtResource("2_18c8p")
 
 [node name="Camera2D" parent="." instance=ExtResource("3")]
 

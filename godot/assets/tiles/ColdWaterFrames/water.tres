@@ -1,0 +1,28 @@
+[gd_resource type="AnimatedTexture" load_steps=9 format=3 uid="uid://cddxlgp6rl45"]
+
+[ext_resource type="Texture2D" uid="uid://bmcvis2cdb2w0" path="res://assets/tiles/ColdWaterFrames/Water_Autotile_32x32_Frame1.png" id="1_y7ncb"]
+[ext_resource type="Texture2D" uid="uid://dtiskxjha316o" path="res://assets/tiles/ColdWaterFrames/Water_Autotile_32x32_Frame2.png" id="2_3rydo"]
+[ext_resource type="Texture2D" uid="uid://ch3dwqqcc6pgb" path="res://assets/tiles/ColdWaterFrames/Water_Autotile_32x32_Frame3.png" id="3_dwt65"]
+[ext_resource type="Texture2D" uid="uid://bchgswoqrv8tk" path="res://assets/tiles/ColdWaterFrames/Water_Autotile_32x32_Frame4.png" id="4_d2klf"]
+[ext_resource type="Texture2D" uid="uid://dvfye6dwpaxyg" path="res://assets/tiles/ColdWaterFrames/Water_Autotile_32x32_Frame5.png" id="5_1avfa"]
+[ext_resource type="Texture2D" uid="uid://bujltiug15agl" path="res://assets/tiles/ColdWaterFrames/Water_Autotile_32x32_Frame6.png" id="6_tuqe8"]
+[ext_resource type="Texture2D" uid="uid://bwx3vxq0w8wgr" path="res://assets/tiles/ColdWaterFrames/Water_Autotile_32x32_Frame7.png" id="7_hbrqg"]
+[ext_resource type="Texture2D" uid="uid://btc5gpleu7d2t" path="res://assets/tiles/ColdWaterFrames/Water_Autotile_32x32_Frame8.png" id="8_isev7"]
+
+[resource]
+frames = 8
+frame_0/texture = ExtResource("1_y7ncb")
+frame_1/texture = ExtResource("2_3rydo")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_dwt65")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_d2klf")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_1avfa")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_tuqe8")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_hbrqg")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("8_isev7")
+frame_7/duration = 1.0

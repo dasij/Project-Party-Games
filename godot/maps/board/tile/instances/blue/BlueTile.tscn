@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfpa1dxf8inp0"]
 
 [ext_resource type="Script" path="res://maps/board/tile/instances/blue/BlueTile.gd" id="1"]
-[ext_resource type="PackedScene" path="res://maps/board/tile/Tile.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://daxpv2fp785mf" path="res://maps/board/tile/Tile.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://d2ljg25ercjwk" path="res://assets/tiles/icon.png" id="3"]
 
 [node name="Tile" instance=ExtResource("2")]
 script = ExtResource("1")
+teleportable = true
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("3")

@@ -1,8 +1,8 @@
 extends Node
 
 var _chances_base := {
-	basic = 45,
-	rare = 80,
+	basic = 70,
+	rare = 90,
 	broken = 95,
 	legendary = 100
 }
@@ -15,10 +15,10 @@ var cards = {
 #		legendary = [Dice],
 #	},
 	any = {
-		basic = [Dice, SubPoint, WhereAmI],
-		rare = [Teleport, Suicide],
-		broken = [TeleportToTile],
-		legendary = [Swap],
+		basic = [Dice],
+		rare = [Teleport, SubPoint],
+		broken = [WhereAmI, Suicide],
+		legendary = [TeleportToTile, Swap],
 	}
 }
 
